@@ -60,7 +60,7 @@ function ScoreArtwork() {
   return (
     <svg className="score-art" viewBox="0 0 380 380" role="img" aria-label="Original music notation and hand-drawn sound marks">
       <rect x="15" y="15" width="350" height="350" fill="#eeeee7"/>
-      <g stroke="#4a5d4e" opacity=".45" strokeWidth="1">{Array.from({length:5},(_,i)=><path key={i} d={\`M52 \${120+i*14} H330\`}/>)}</g>
+      <g stroke="#4a5d4e" opacity=".45" strokeWidth="1">{Array.from({length:5},(_,i)=><path key={i} d={"M52 " + (120+i*14) + " H330"}/>)}</g>
       <g fill="#1a1a1a">
         <ellipse cx="92" cy="162" rx="10" ry="6" transform="rotate(-18 92 162)"/><path d="M101 161 V83" stroke="#1a1a1a" strokeWidth="2"/>
         <ellipse cx="151" cy="133" rx="10" ry="6" transform="rotate(-18 151 133)"/><path d="M160 132 V55" stroke="#1a1a1a" strokeWidth="2"/>
