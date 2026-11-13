@@ -1,19 +1,19 @@
 # Naveen's Musical Class
 
-A one-page React and Vite website for people enquiring about music lessons.
+A small React and Vite website for music lesson enquiries.
 
-## What's on the site
+## Pages
 
-- Intro and lesson sections for acoustic guitar, keyboard and piano, and vocals.
-- Practice section with original inline instrument illustrations.
-- Contact details and a WhatsApp enquiry form.
-- Responsive navigation, keyboard focus states, a skip link, and reduced-motion support.
+- Home: lessons, practice information and contact form.
+- Terms of use: \`/terms\`
+- Privacy policy: \`/privacy\`
+- Custom missing page: \`404.html\`
 
 ## Enquiries
 
-The form prepares a WhatsApp message for **+91 90286 71906**. It does not send the message or store form submissions. The visitor reviews it and presses Send in WhatsApp.
+The form prepares a WhatsApp message for +91 90286 71906. The site does not submit the form to a backend or store enquiries. Visitors review the message and choose whether to send it in WhatsApp.
 
-Timings, fees, and the class address are not listed because current details need to come directly from the class.
+Timings, fees and class arrangements need to be confirmed directly with Naveen.
 
 ## Run locally
 
