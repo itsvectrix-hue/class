@@ -30,7 +30,7 @@ export function CircularText({ text = "LEARN • PLAY • CREATE • ", classNam
 export function DecryptedText({ children, className = "" }) { return <span className={"rb-decrypted-text " + className} data-text={children}>{children}</span>; }
 export function ScrollVelocity({ children, className = "" }) { return <div className={"rb-scroll-velocity " + className}><div>{Array.from({length:4},(_,i)=><span key={i}>{children}<i>✳</i></span>)}</div></div>; }
 export function ClickSpark({ children, className = "" }) { const [spark, setSpark] = useState(false); return <div className={"rb-click-spark " + className + (spark ? " sparked" : "")} onClick={()=>{setSpark(true);window.setTimeout(()=>setSpark(false),450);}}>{children}</div>; }
-export function Particles({ count = 22, className = "" }) { return <div aria-hidden="true" className={"rb-particles " + className}>{Array.from({length:count},(_,i)=><i key={i} style={{"--i":i}} />)}</div>; }
+export function Particles({ count = 22, className = "" }) { return <div aria-hidden="true" className={"rb-particles " + className}>{Array.from({length:count},(_,i)=><i key={i} style={{"--i":i,left:((i*37)%100)+"%",top:((i*19)%100)+"%"}} />)}</div>; }
 export function Aurora({ className = "" }) { return <div aria-hidden="true" className={"rb-aurora " + className} />; }
 export function Grainient({ className = "" }) { return <div aria-hidden="true" className={"rb-grainient " + className} />; }
 export function DotGrid({ className = "" }) { return <div aria-hidden="true" className={"rb-dot-grid " + className} />; }
