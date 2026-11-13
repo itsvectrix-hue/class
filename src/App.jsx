@@ -17,7 +17,7 @@ const whatsappUrl = "https://wa.me/" + phoneNumber;
 const lessons = [
   {
     name: "Acoustic guitar",
-    detail: "Chords, rhythm and the songs you want to play",
+    detail: "Chords, rhythm and songs",
     icon: Guitar,
   },
   {
@@ -42,12 +42,12 @@ function AcousticIllustration() {
     >
       <path
         d="M111 143 C82 115 79 84 95 55 L165 55 C181 84 178 115 149 143 L151 310 C165 333 200 353 211 395 C228 461 198 514 153 538 C132 549 106 549 85 538 C40 514 10 461 27 395 C38 353 73 333 87 310Z"
-        fill="#34362f"
+        fill="#343b32"
       />
-      <path d="M104 142 L156 142 L161 357 L99 357Z" fill="#20211d" />
-      <path d="M94 56 C85 28 101 12 130 10 C159 12 175 28 166 56 L158 83 L102 83Z" fill="#20211d" />
-      <path d="M109 20 H151 L148 58 H112Z" fill="#66675f" />
-      <g fill="#e1dfd4">
+      <path d="M104 142 L156 142 L161 357 L99 357Z" fill="#20251f" />
+      <path d="M94 56 C85 28 101 12 130 10 C159 12 175 28 166 56 L158 83 L102 83Z" fill="#20251f" />
+      <path d="M109 20 H151 L148 58 H112Z" fill="#77796f" />
+      <g fill="#e8e5d9">
         <circle cx="98" cy="28" r="5" />
         <circle cx="94" cy="46" r="5" />
         <circle cx="98" cy="64" r="5" />
@@ -57,11 +57,11 @@ function AcousticIllustration() {
       </g>
       <path
         d="M45 397 C58 369 82 351 119 350 C156 351 182 369 195 397 C214 444 186 501 151 520 C126 533 104 533 79 520 C44 501 16 444 45 397Z"
-        fill="#34362f"
+        fill="#343b32"
       />
-      <circle cx="130" cy="438" r="42" fill="#171815" />
-      <circle cx="130" cy="438" r="34" fill="none" stroke="#a9a89e" strokeWidth="2" />
-      <circle cx="130" cy="438" r="27" fill="none" stroke="#a9a89e" strokeWidth="1" />
+      <circle cx="130" cy="438" r="42" fill="#171b17" />
+      <circle cx="130" cy="438" r="34" fill="none" stroke="#c5c4b7" strokeWidth="2" />
+      <circle cx="130" cy="438" r="27" fill="none" stroke="#c5c4b7" strokeWidth="1" />
       <path d="M93 522 Q130 533 167 522 L172 536 Q130 550 88 536Z" fill="#c7c4b8" />
       {Array.from({ length: 6 }, (_, index) => (
         <path
@@ -77,10 +77,48 @@ function AcousticIllustration() {
           key={"fret-" + index}
           d={"M101 " + (164 + index * 16) + " H159"}
           fill="none"
-          stroke="#87877e"
+          stroke="#8a8c82"
           strokeWidth="1"
         />
       ))}
+    </svg>
+  );
+}
+
+function KeyboardIllustration() {
+  return (
+    <svg className="keyboard-illustration" viewBox="0 0 520 210" aria-hidden="true">
+      <path d="M18 16 H502" stroke="#aeb5a5" strokeWidth="1" />
+      <path d="M18 194 H502" stroke="#aeb5a5" strokeWidth="1" />
+      <rect x="18" y="40" width="484" height="136" rx="3" fill="#e8e7df" />
+      {Array.from({ length: 14 }, (_, index) => (
+        <rect
+          key={"key-" + index}
+          x={24 + index * 34}
+          y="46"
+          width="33"
+          height="123"
+          fill="#fbfaf5"
+          stroke="#a8a99f"
+          strokeWidth=".8"
+        />
+      ))}
+      {Array.from({ length: 13 }, (_, index) =>
+        ![2, 6, 9].includes(index % 7) ? (
+          <rect
+            key={"black-" + index}
+            x={47 + index * 34}
+            y="46"
+            width="21"
+            height="76"
+            rx="1"
+            fill="#272c26"
+          />
+        ) : null
+      )}
+      <path d="M18 26 H502" stroke="#aeb5a5" strokeWidth="1" />
+      <circle cx="74" cy="26" r="3" fill="#f0eee6" />
+      <circle cx="446" cy="26" r="3" fill="#f0eee6" />
     </svg>
   );
 }
@@ -182,7 +220,6 @@ function App() {
   const [showLoader, setShowLoader] = useState(true);
   const [form, setForm] = useState({
     name: "",
-    phone: "",
     lesson: "Acoustic guitar",
     message: "",
   });
@@ -205,7 +242,6 @@ function App() {
       "Hello Naveen's Musical Class,",
       "",
       "Name: " + form.name.trim(),
-      "Phone: " + form.phone.trim(),
       "Interested in: " + form.lesson,
       "Message: " + (form.message.trim() || "Please share the current class details."),
     ].join("\n");
@@ -227,27 +263,29 @@ function App() {
           <section className="hero" id="home">
             <div className="hero-copy">
               <p className="location-line">Music lessons in Pune</p>
-              <h1>Pick an instrument and learn a song</h1>
+              <h1>Pick up an instrument. Play something you love.</h1>
               <p className="hero-description">
-                Naveen's Musical Class offers guitar, keyboard, piano and vocal lessons in Pune. Ask about current timings and fees before you visit.
+                Guitar, keyboard, piano and vocal lessons at Naveen's Musical Class.
+                Ask about current timings and fees.
               </p>
               <div className="hero-actions">
                 <a className="primary-link" href="#contact">
                   Ask about lessons <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
-                <a className="secondary-link" href="#lessons">See the lessons</a>
+                <a className="secondary-link" href="#lessons">Explore lessons</a>
               </div>
             </div>
 
             <div className="hero-art">
               <AcousticIllustration />
+              <span className="art-caption">Acoustic guitar</span>
             </div>
           </section>
 
           <section className="lessons-section" id="lessons">
             <div className="section-intro">
               <h2>Find your instrument</h2>
-              <p>Choose an instrument and ask about the current classes and availability.</p>
+              <p>Choose what you want to learn and ask about the current classes.</p>
             </div>
 
             <div className="lesson-list">
@@ -258,12 +296,16 @@ function App() {
                   key={name}
                   onClick={() => setForm((current) => ({ ...current, lesson: name }))}
                 >
-                  <span className="lesson-icon"><Icon size={25} strokeWidth={1.5} aria-hidden="true" /></span>
+                  <span className="lesson-icon">
+                    <Icon size={27} strokeWidth={1.45} aria-hidden="true" />
+                  </span>
                   <span className="lesson-copy">
                     <strong>{name}</strong>
                     <span>{detail}</span>
                   </span>
-                  <span className="lesson-link">Ask about this <ArrowUpRight size={15} aria-hidden="true" /></span>
+                  <span className="lesson-link">
+                    Ask about this <ArrowUpRight size={15} aria-hidden="true" />
+                  </span>
                 </a>
               ))}
             </div>
@@ -271,12 +313,13 @@ function App() {
 
           <section className="practice-section" id="practice">
             <div className="practice-art">
-              <Piano size={54} strokeWidth={1.2} aria-hidden="true" />
+              <KeyboardIllustration />
             </div>
             <div className="practice-copy">
-              <h2>A place to begin</h2>
+              <h2>Start with the music you enjoy</h2>
               <p>
-                Bring a song you're trying to learn, or ask where to begin. Tell Naveen what you've played before and what you'd like to work on.
+                Bring a song you're trying to learn, or ask where to begin.
+                Tell Naveen what you've played before and what you'd like to work on.
               </p>
               <a className="text-link" href="#contact">
                 Talk about lessons <ArrowUpRight size={16} aria-hidden="true" />
@@ -288,7 +331,8 @@ function App() {
             <div className="contact-copy">
               <h2>Have a question?</h2>
               <p>
-                Want to check fees, timings or which instrument to start with? Call or send a WhatsApp message.
+                Ask about fees, timings or which instrument to start with.
+                Call or send a WhatsApp message.
               </p>
               <a className="contact-detail" href={"tel:+" + phoneNumber}>
                 <Phone size={17} aria-hidden="true" />
@@ -315,23 +359,6 @@ function App() {
               </label>
 
               <label>
-                Phone number
-                <input
-                  name="phone"
-                  type="tel"
-                  inputMode="tel"
-                  autoComplete="tel"
-                  maxLength={25}
-                  pattern="[+0-9 ()-]{7,25}"
-                  title="Enter a valid phone number"
-                  required
-                  value={form.phone}
-                  onChange={updateField("phone")}
-                  placeholder="+91"
-                />
-              </label>
-
-              <label>
                 Lesson
                 <select name="lesson" value={form.lesson} onChange={updateField("lesson")}>
                   <option>Acoustic guitar</option>
@@ -341,7 +368,7 @@ function App() {
                 </select>
               </label>
 
-              <label>
+              <label className="message-field">
                 What would you like to learn?
                 <textarea
                   name="message"
@@ -358,7 +385,7 @@ function App() {
               </button>
 
               <p className="form-note">
-                Your message opens in WhatsApp. It is sent only when you press Send there.
+                Your message opens in WhatsApp. Check it before sending.
               </p>
 
               {preparedMessage && (

@@ -1,6 +1,6 @@
 # Naveen's Musical Class
 
-A small React and Vite website for music lesson enquiries.
+A React and Vite website for music lesson enquiries.
 
 ## Pages
 
@@ -11,7 +11,7 @@ A small React and Vite website for music lesson enquiries.
 
 ## Enquiries
 
-The form prepares a WhatsApp message for +91 90286 71906. The site does not submit the form to a backend or store enquiries. Visitors review the message and choose whether to send it in WhatsApp.
+The form asks for a name and lesson interest. It prepares a WhatsApp message for +91 90286 71906 without asking the visitor to type their phone number. The website does not store enquiry details. Visitors review the message and choose whether to send it in WhatsApp.
 
 Timings, fees and class arrangements need to be confirmed directly with Naveen.
 
