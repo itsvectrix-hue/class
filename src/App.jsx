@@ -1,86 +1,85 @@
 import React, { useState } from "react";
-import { ArrowDownRight, ArrowUpRight, ArrowRight, Clock3, Guitar, Menu, Music2, Piano, X, Phone, MessageCircle, Send } from "lucide-react";
-import { SplitText, ScrollReveal, Magnet, ScrollFloat, CircularText } from "./components/ReactBits";
+import { ArrowDownRight, ArrowUpRight, ArrowRight, Menu, X, Phone, MessageCircle, Send, Instagram, Music2, Guitar, Piano } from "lucide-react";
+import { SplitText, ScrollReveal, CircularText, Magnet, ScrollFloat } from "./components/ReactBits";
 
 const phone = "919028671906";
 const whatsapp = "https://wa.me/" + phone;
-const instruments = [
-  { number: "01", name: "Acoustic guitar", note: "Chords, rhythm, fingerstyle and the songs you love." },
-  { number: "02", name: "Keyboard", note: "Melody, coordination and a foundation in music." },
-  { number: "03", name: "Piano", note: "Technique, expression and confident playing." },
-  { number: "04", name: "Vocals", note: "Pitch, breath, listening and finding your voice." }
+const lessons = [
+  { no: "01", name: "Acoustic guitar", line: "Learn chords, rhythm and the songs you love.", kind: "guitar" },
+  { no: "02", name: "Keyboard", line: "Build a feel for melody, harmony and timing.", kind: "keys" }
 ];
 
-function GuitarArtwork() {
+function AcousticGuitar({ className = "" }) {
   return (
-    <svg className="guitar-art" viewBox="0 0 620 720" role="img" aria-label="Original line illustration of an acoustic guitar">
+    <svg className={"acoustic-guitar " + className} viewBox="0 0 260 650" role="img" aria-label="Illustration of an acoustic guitar">
       <defs>
-        <pattern id="paperGrain" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".45" fill="#1a1a1a" opacity=".16"/></pattern>
+        <linearGradient id="guitarBody" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#77786f"/><stop offset=".42" stopColor="#282a27"/><stop offset="1" stopColor="#10110f"/></linearGradient>
+        <linearGradient id="guitarNeck" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#20211e"/><stop offset=".5" stopColor="#44463e"/><stop offset="1" stopColor="#161714"/></linearGradient>
+        <filter id="guitarShadow" x="-50%" y="-20%" width="200%" height="150%"><feGaussianBlur stdDeviation="8"/></filter>
       </defs>
-      <path d="M340 30 C500 65 595 195 570 350 C550 480 485 610 350 675 C220 737 80 630 58 492 C38 365 104 245 205 155 C245 120 285 77 340 30Z" fill="#e7e9df"/>
-      <path d="M340 30 C500 65 595 195 570 350 C550 480 485 610 350 675 C220 737 80 630 58 492 C38 365 104 245 205 155 C245 120 285 77 340 30Z" fill="url(#paperGrain)"/>
-      <g transform="translate(38 5) rotate(13 310 350)">
-        <path d="M292 105 C278 81 282 53 305 31 C328 9 361 13 381 37 C399 60 395 89 380 111 L372 205 L388 297 C404 336 456 348 466 408 C478 483 438 542 375 557 C322 570 269 550 246 514 C216 469 233 410 261 376 C282 350 298 340 302 302 L294 205Z" fill="#a2aa91" stroke="#1a1a1a" strokeWidth="2.4"/>
-        <path d="M303 34 C323 13 355 12 378 36 L367 203 L310 203Z" fill="#252823" stroke="#1a1a1a" strokeWidth="2"/>
-        <path d="M307 203 L370 203 L379 350 L299 350Z" fill="#30352e" stroke="#1a1a1a" strokeWidth="2"/>
-        {Array.from({length:13},(_,i)=><path key={i} d={"M304 " + (215+i*10.5) + " L375 " + (215+i*10.5)} stroke="#b3b7a8" strokeWidth="1.2"/>)}
-        <path d="M302 31 L300 5 L385 5 L382 34" fill="#252823" stroke="#1a1a1a" strokeWidth="2"/>
-        {Array.from({length:6},(_,i)=><g key={i}><path d={"M" + (309+i*12) + " 8 L" + (309+i*12) + " 514"} stroke="#e8e6da" strokeWidth={i===2||i===3?1.6:1} opacity=".92"/><circle cx={308+i*13} cy="21" r="4" fill="#c7c7b8" stroke="#252823"/><circle cx={308+i*13} cy="514" r="2" fill="#d7d5c7"/></g>)}
-        <path d="M257 405 C278 375 312 364 340 373 C378 385 399 418 400 455 C402 497 370 529 331 529 C285 529 246 497 244 455 C243 435 248 418 257 405Z" fill="#d6d7cb" stroke="#1a1a1a" strokeWidth="2"/>
-        <circle cx="327" cy="452" r="54" fill="#33382f" stroke="#1a1a1a" strokeWidth="2.5"/>
-        <circle cx="327" cy="452" r="44" fill="#1b1d19" stroke="#c7c8b8" strokeWidth="2"/>
-        <circle cx="327" cy="452" r="34" fill="#252a23"/>
-        <path d="M299 514 L355 514 L359 526 L294 526Z" fill="#252823"/>
-        <path d="M291 536 Q327 545 363 536" fill="none" stroke="#d7d4c6" strokeWidth="3"/>
-        <path d="M250 436 Q235 447 245 464 M402 436 Q417 447 400 465" fill="none" stroke="#c7c8b8" strokeWidth="2"/>
+      <ellipse cx="133" cy="605" rx="91" ry="16" fill="#000" opacity=".2" filter="url(#guitarShadow)"/>
+      <g>
+        <path d="M112 154 C88 128 79 97 95 69 L165 69 C181 97 172 128 148 154 L153 331 C159 362 195 374 210 412 C231 468 210 539 170 576 C141 603 91 598 61 574 C18 539 5 466 27 410 C42 374 79 362 85 331Z" fill="url(#guitarBody)" stroke="#11120f" strokeWidth="3"/>
+        <path d="M105 157 L155 157 L162 369 L97 369Z" fill="url(#guitarNeck)" stroke="#11120f" strokeWidth="2"/>
+        <path d="M93 70 C84 40 99 17 130 13 C161 17 176 40 167 70 L159 94 L101 94Z" fill="#171815" stroke="#080908" strokeWidth="2"/>
+        <path d="M104 18 Q130 5 156 18 L151 60 L109 60Z" fill="#30322e"/>
+        <g fill="#b8b8ae" stroke="#222" strokeWidth="1">
+          <circle cx="98" cy="30" r="7"/><circle cx="92" cy="48" r="7"/><circle cx="98" cy="65" r="7"/>
+          <circle cx="162" cy="30" r="7"/><circle cx="168" cy="48" r="7"/><circle cx="162" cy="65" r="7"/>
+        </g>
+        <path d="M105 91 L155 91 L161 366 L98 366Z" fill="#282a26" opacity=".7"/>
+        {Array.from({length:12},(_,i)=><path key={i} d={"M99 " + (177+i*15.5) + " L159 " + (177+i*15.5)} stroke="#a6a69b" strokeWidth="1.5" opacity=".8"/>)}
+        {[0,1,2,3,4,5].map(i=><circle key={i} cx={108+i*8.2} cy={211+(i%2)*30} r="2.6" fill="#e2dfd2"/>)}
+        <path d="M42 416 C55 385 81 367 112 367 C147 365 177 389 189 422 C202 460 187 514 153 544 C125 569 88 561 60 542 C27 518 20 458 42 416Z" fill="url(#guitarBody)"/>
+        <circle cx="118" cy="453" r="46" fill="#131411" stroke="#cbc9bd" strokeWidth="5"/>
+        <circle cx="118" cy="453" r="37" fill="#191a17" stroke="#77786e" strokeWidth="2"/>
+        <circle cx="118" cy="453" r="31" fill="#050605"/>
+        <circle cx="118" cy="453" r="25" fill="none" stroke="#aaa99c" strokeDasharray="1 4" strokeWidth="4"/>
+        <path d="M88 538 Q118 547 148 538 L154 551 Q118 565 82 551Z" fill="#b5b2a5" stroke="#161714" strokeWidth="2"/>
+        {Array.from({length:6},(_,i)=><path key={i} d={"M" + (104+i*5.3) + " 45 L" + (97+i*8.3) + " 541"} stroke="#deddd3" strokeWidth=".85" opacity=".9"/>)}
       </g>
-      <g fill="#4a5d4e" fontFamily="DM Mono, monospace" fontSize="10" letterSpacing="2">
-        <text x="34" y="630">A SOUND OF YOUR OWN</text>
-        <text x="450" y="82">Nº 01</text>
-      </g>
-      <path d="M30 608 H170" stroke="#4a5d4e" strokeWidth="1"/>
     </svg>
   );
 }
 
-function KeyboardArtwork() {
+function KeyboardStudy() {
   return (
-    <svg className="keyboard-art" viewBox="0 0 560 230" role="img" aria-label="Original illustration of piano keys">
-      <rect x="10" y="12" width="540" height="206" rx="2" fill="#e3e5da"/>
-      <path d="M30 34 H530" stroke="#4a5d4e" strokeWidth="1"/>
-      {Array.from({length:14},(_,i)=><rect key={i} x={30+i*35.7} y="45" width="35.7" height="150" fill={i%2===0?"#faf9f5":"#f0eee7"} stroke="#1a1a1a" strokeWidth=".8"/>)}
-      {Array.from({length:13},(_,i)=>![2,6,9].includes(i%7)?<rect key={i} x={55+i*35.7} y="45" width="22" height="88" fill="#1a1a1a"/>:null)}
-      <text x="30" y="30" fill="#4a5d4e" fontSize="9" fontFamily="DM Mono" letterSpacing="2">A SMALL STUDY IN NOTES</text>
-      <text x="442" y="211" fill="#4a5d4e" fontSize="8" fontFamily="DM Mono">88 KEYS / INFINITE IDEAS</text>
+    <svg className="keyboard-study" viewBox="0 0 280 170" role="img" aria-label="Piano keyboard illustration">
+      <rect x="1" y="1" width="278" height="168" fill="#e8e7e1"/>
+      {Array.from({length:14},(_,i)=><rect key={i} x={12+i*18.3} y="30" width="18.3" height="119" fill={i%2?"#f5f4ef":"#fff"} stroke="#20211e" strokeWidth=".7"/>)}
+      {Array.from({length:13},(_,i)=>![2,6,9].includes(i%7)?<rect key={i} x={24+i*18.3} y="30" width="11.5" height="68" fill="#171815"/>:null)}
+      <path d="M12 20 H268" stroke="#4a4b45" strokeWidth=".7"/>
     </svg>
   );
 }
 
-function ScoreArtwork() {
+function ScoreTile({ n, children }) {
+  return <div className="score-tile"><span>{n}</span>{children}</div>;
+}
+
+function ElectricGuitar() {
   return (
-    <svg className="score-art" viewBox="0 0 380 380" role="img" aria-label="Original music notation and hand-drawn sound marks">
-      <rect x="15" y="15" width="350" height="350" fill="#eeeee7"/>
-      <g stroke="#4a5d4e" opacity=".45" strokeWidth="1">{Array.from({length:5},(_,i)=><path key={i} d={"M52 " + (120+i*14) + " H330"}/>)}</g>
-      <g fill="#1a1a1a">
-        <ellipse cx="92" cy="162" rx="10" ry="6" transform="rotate(-18 92 162)"/><path d="M101 161 V83" stroke="#1a1a1a" strokeWidth="2"/>
-        <ellipse cx="151" cy="133" rx="10" ry="6" transform="rotate(-18 151 133)"/><path d="M160 132 V55" stroke="#1a1a1a" strokeWidth="2"/>
-        <ellipse cx="225" cy="150" rx="10" ry="6" transform="rotate(-18 225 150)"/><path d="M234 149 V76" stroke="#1a1a1a" strokeWidth="2"/>
-        <ellipse cx="283" cy="119" rx="10" ry="6" transform="rotate(-18 283 119)"/><path d="M292 118 V44" stroke="#1a1a1a" strokeWidth="2"/>
-      </g>
-      <path d="M65 248 C120 206 170 295 222 245 S300 223 318 260" stroke="#a3aa95" strokeWidth="4" fill="none" strokeLinecap="round"/>
-      <text x="52" y="320" fill="#4a5d4e" fontSize="9" fontFamily="DM Mono" letterSpacing="2">FOLLOW THE FEELING</text>
+    <svg className="electric-guitar" viewBox="0 0 210 440" role="img" aria-label="Illustration of an electric guitar">
+      <path d="M88 104 L125 104 L134 190 C160 184 177 210 170 243 C165 267 148 276 144 303 C140 348 115 380 84 378 C56 376 48 349 58 320 C67 294 55 277 37 259 C12 233 25 194 57 191 C71 190 78 198 82 207Z" fill="#151613" stroke="#77786f" strokeWidth="2"/>
+      <path d="M91 105 L120 105 L134 274 L78 274Z" fill="#35372f" stroke="#080908" strokeWidth="2"/>
+      <path d="M92 104 L88 25 L124 25 L120 104Z" fill="#242620" stroke="#080908" strokeWidth="2"/>
+      {Array.from({length:6},(_,i)=><path key={i} d={"M" + (92+i*5.1) + " 34 L" + (79+i*10.2) + " 353"} stroke="#d9d8ce" strokeWidth=".8"/>)}
+      <rect x="71" y="245" width="62" height="9" rx="2" fill="#b5b3a7"/>
+      <rect x="77" y="268" width="55" height="7" rx="2" fill="#b5b3a7"/>
+      <circle cx="100" cy="300" r="21" fill="#b5b3a7"/><circle cx="100" cy="300" r="16" fill="#34362f"/>
+      <circle cx="126" cy="300" r="7" fill="#b5b3a7"/><circle cx="143" cy="315" r="4" fill="#b5b3a7"/>
+      <g fill="#c6c5ba"><circle cx="83" cy="40" r="4"/><circle cx="128" cy="40" r="4"/><circle cx="82" cy="65" r="4"/><circle cx="128" cy="65" r="4"/></g>
     </svg>
   );
 }
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sent, setSent] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", interest: "Acoustic guitar", message: "" });
-  const nav = [{label:"About",href:"#about"},{label:"Lessons",href:"#courses"},{label:"Timings & fees",href:"#timings-fees"},{label:"Gallery",href:"#gallery"},{label:"Contact",href:"#contact"}];
+  const [sent, setSent] = useState(false);
   const submit = (e) => {
     e.preventDefault();
-    const body = [
+    const message = [
       "Hello Naveen's Musical Class!",
       "",
       "Name: " + form.name,
@@ -89,135 +88,98 @@ function App() {
       "Message: " + (form.message || "Please share class details.")
     ].join("\n");
     setSent(true);
-    window.open(whatsapp + "?text=" + encodeURIComponent(body), "_blank", "noopener,noreferrer");
+    window.open(whatsapp + "?text=" + encodeURIComponent(message), "_blank", "noopener,noreferrer");
   };
 
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#home" aria-label="Naveen's Musical Class home">
-          <span className="brand-symbol">n<span>.</span></span>
-          <span className="brand-copy">NAVEEN'S <small>MUSICAL CLASS</small></span>
-        </a>
+        <a className="brand" href="#home" aria-label="Naveen's Musical Class home"><span className="brand-mark">M</span><span className="brand-caption">NAVEEN'S<br/>MUSICAL CLASS</span></a>
         <nav className={menuOpen ? "main-nav open" : "main-nav"} aria-label="Main navigation">
-          {nav.map(item=><a href={item.href} key={item.label} onClick={()=>setMenuOpen(false)}>{item.label}</a>)}
-          <a className="nav-contact" href="#contact" onClick={()=>setMenuOpen(false)}>Enquire <ArrowUpRight size={14}/></a>
+          <a href="#courses" onClick={()=>setMenuOpen(false)}>Lessons</a>
+          <a href="#gallery" onClick={()=>setMenuOpen(false)}>Gallery</a>
+          <a href="#contact" onClick={()=>setMenuOpen(false)}>Contacts</a>
+          <a href="#contact" className="nav-enquire" onClick={()=>setMenuOpen(false)}>Enquire <ArrowUpRight size={13}/></a>
         </nav>
-        <button className="menu-toggle" onClick={()=>setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Close menu" : "Open menu"}>{menuOpen?<X/>:<Menu/>}</button>
+        <button className="menu-toggle" onClick={()=>setMenuOpen(!menuOpen)} aria-label={menuOpen?"Close menu":"Open menu"}>{menuOpen?<X/>:<Menu/>}</button>
       </header>
 
       <main>
         <section className="hero" id="home">
-          <div className="hero-aside"><span>INDEPENDENT MUSIC LEARNING</span><span>PUNE, INDIA&nbsp; / &nbsp;EST. 2026</span></div>
-          <div className="hero-main">
-            <div className="hero-copy">
-              <p className="eyebrow"><span/> LESSONS FOR THE LOVE OF IT</p>
-              <h1><SplitText>A little more</SplitText><br/><em>music</em> in your life.</h1>
-              <p className="hero-intro">Find your rhythm, learn an instrument, and make space for something that stays with you.</p>
-              <div className="hero-actions">
-                <Magnet><a className="button button-dark" href="#courses">Explore lessons <ArrowUpRight size={16}/></a></Magnet>
-                <a className="quiet-link" href="#about">A little about us <ArrowDownRight size={15}/></a>
-              </div>
-            </div>
-            <div className="hero-art-wrap">
-              <div className="art-note art-note-top">NO. 01 <span>STRING STUDY</span></div>
-              <ScrollFloat><GuitarArtwork/></ScrollFloat>
-              <div className="hero-art-seal"><CircularText text="LEARN • LISTEN • PLAY • "/><span>♪</span></div>
-              <div className="art-note art-note-bottom">SIX STRINGS.<br/>ENDLESS WAYS TO BEGIN.</div>
-            </div>
+          <div className="hero-word" aria-hidden="true">MUSIC</div>
+          <div className="hero-instrument"><ScrollFloat><AcousticGuitar/></ScrollFloat></div>
+          <div className="hero-topnote"><span>THE ART OF LEARNING</span><span>01 / 04</span></div>
+          <div className="hero-side-dots"><i/><i/><i/></div>
+          <div className="hero-offer">
+            <div className="offer-mark"><span>01</span><small>LESSONS</small></div>
+            <div className="offer-copy"><strong>Find your sound.</strong><span>Guitar · Keyboard · Piano · Vocals</span><a href="#courses">Explore lessons <ArrowUpRight size={13}/></a></div>
           </div>
-          <div className="hero-foot"><span>START WHERE YOU ARE.</span><span className="foot-rule"/><a href="#about">SCROLL TO EXPLORE <ArrowDownRight size={13}/></a></div>
+          <div className="hero-foot"><span>LEARN AT YOUR OWN PACE</span><span className="hero-rule"/><a href="#catalog">SCROLL TO DISCOVER <ArrowDownRight size={12}/></a></div>
         </section>
 
-        <section className="about-section section-pad" id="about">
-          <div className="section-label"><span>01</span><span>THE CLASS</span></div>
-          <div className="about-layout">
-            <div className="about-heading"><h2>It starts with<br/><em>a sound.</em></h2><span className="hand-mark">and grows from there ↗</span></div>
-            <div className="about-copy">
-              <ScrollReveal><p className="about-lead">Music gives you a way to slow down, pay attention, and say something without words.</p></ScrollReveal>
-              <ScrollReveal><p>At Naveen's Musical Class, the aim is simple: make learning welcoming, practical and full of discovery. Whether this is your first lesson or the next step in your musical journey, there's room to find your own pace.</p></ScrollReveal>
-              <a className="inline-link" href="#contact">Meet us through a conversation <ArrowUpRight size={15}/></a>
+        <section className="catalog-section" id="catalog">
+          <div className="section-heading"><a className="section-monogram" href="#home">M</a><span className="heading-rule"/><h2>Lessons</h2></div>
+          <div className="catalog-layout" id="courses">
+            <aside className="catalog-aside"><p>Make a little room for music.</p><span>Learn the instrument that makes you want to come back tomorrow.</span></aside>
+            <div className="catalog-items">
+              <a className="catalog-item" href="#contact">
+                <div className="catalog-art"><AcousticGuitar className="catalog-guitar"/></div>
+                <h3>Acoustic guitar</h3><p>Chords · rhythm · songs</p><span className="catalog-action">ENQUIRE <ArrowUpRight size={12}/></span>
+              </a>
+              <a className="catalog-item" href="#contact">
+                <div className="catalog-art keyboard-frame"><KeyboardStudy/></div>
+                <h3>Keyboard & piano</h3><p>Melody · timing · technique</p><span className="catalog-action">ENQUIRE <ArrowUpRight size={12}/></span>
+              </a>
             </div>
-          </div>
-          <div className="about-bottom"><span>NO AUDITION REQUIRED.</span><span>JUST CURIOSITY, AND A LITTLE PRACTICE.</span></div>
-        </section>
-
-        <section className="lessons-section section-pad" id="courses">
-          <div className="section-label"><span>02</span><span>FIND YOUR INSTRUMENT</span></div>
-          <div className="lessons-heading"><h2>What would you<br/><em>like to play?</em></h2><p>Four ways in. A whole world to explore.</p></div>
-          <div className="instrument-list">
-            {instruments.map((item,i)=><a className="instrument-row" href="#contact" key={item.number}>
-              <span className="instrument-number">{item.number}</span>
-              <span className="instrument-name">{item.name}<small>{item.note}</small></span>
-              <span className="instrument-mark">{i===0?<Guitar/>:i===1?<Music2/>:i===2?<Piano/>:<span className="voice-mark">♫</span>}</span>
-              <ArrowUpRight className="instrument-arrow" size={19}/>
-            </a>)}
-          </div>
-          <div className="lessons-endnote"><span>NOT SURE YET?</span><a href="#contact">TELL US WHAT YOU LISTEN TO. WE'LL TAKE IT FROM THERE <ArrowRight size={14}/></a></div>
-        </section>
-
-        <section className="interlude">
-          <div className="interlude-art"><KeyboardArtwork/><span>THE SPACE BETWEEN THE NOTES MATTERS, TOO.</span></div>
-          <div className="interlude-copy">
-            <p className="eyebrow"><span/> A PRACTICE, NOT A PERFORMANCE</p>
-            <h2>Play it<br/><em>your way.</em></h2>
-            <p>Small wins count. Repeating a tricky bar counts. Playing a song just because it makes you happy counts most of all.</p>
-            <a className="interlude-link" href="#timings-fees">How classes work <ArrowUpRight size={15}/></a>
-          </div>
-          <div className="interlude-ornament">♪</div>
-        </section>
-
-        <section className="schedule-section section-pad" id="timings-fees">
-          <div className="section-label"><span>03</span><span>MAKE A LITTLE ROOM</span></div>
-          <div className="schedule-layout">
-            <div className="schedule-heading"><h2>Good things<br/>take <em>practice.</em></h2><p>Let's find a class time that fits around the rest of your life.</p><a className="button button-outline" href={whatsapp+"?text="+encodeURIComponent("Hello, please share the current class timings and fees.")} target="_blank" rel="noreferrer">Ask about timings <ArrowUpRight size={15}/></a></div>
-            <div className="schedule-details">
-              <div className="detail-line"><span className="detail-index">A.</span><div><span className="detail-kicker">CLASS TIMINGS</span><h3>Flexible batches</h3><p>Ask about current weekday and weekend availability.</p></div><Clock3/></div>
-              <div className="detail-line"><span className="detail-index">B.</span><div><span className="detail-kicker">COURSE FEES</span><h3>Clear from the start</h3><p>Fees vary by instrument and class plan. We'll share the current details directly.</p></div><span className="detail-symbol">₹</span></div>
-              <div className="schedule-footnote">A QUICK MESSAGE IS ALL IT TAKES TO GET STARTED.</div>
-            </div>
+            <aside className="catalog-note"><p>At your own pace</p><ul><li>Beginner friendly</li><li>Personal guidance</li><li>Practice with purpose</li><li>Play with joy</li></ul></aside>
           </div>
         </section>
 
-        <section className="gallery-section section-pad" id="gallery">
-          <div className="section-label"><span>04</span><span>NOTES FROM THE STUDIO</span></div>
-          <div className="gallery-layout">
-            <div className="gallery-title"><h2>A life with<br/><em>music in it.</em></h2><p>Instruments, patterns, and the little details that make a sound yours.</p></div>
-            <div className="gallery-artwork">
-              <div className="gallery-sheet"><ScoreArtwork/><span>STUDY Nº 04 — IN PROGRESS</span></div>
-              <div className="gallery-quote"><span>“</span><p>Every song begins<br/>with one note.</p><small>KEEP GOING.</small></div>
+        <section className="social-section" id="gallery">
+          <div className="section-heading"><a className="section-monogram" href="#home">M</a><span className="heading-rule"/><h2>Inside the class</h2></div>
+          <div className="social-layout">
+            <div className="social-mosaic" aria-label="A collage of music studies and instruments">
+              <ScoreTile n="01"><svg viewBox="0 0 100 100"><path d="M15 70 Q50 20 85 70" fill="none" stroke="#333" strokeWidth="3"/><circle cx="50" cy="48" r="20" fill="none" stroke="#777" strokeWidth="2"/><path d="M50 15 V81" stroke="#111" strokeWidth="2"/></svg></ScoreTile>
+              <ScoreTile n="02"><svg viewBox="0 0 100 100"><path d="M20 12 L80 88 M80 12 L20 88" stroke="#272823" strokeWidth="4"/><circle cx="50" cy="50" r="28" fill="none" stroke="#96968b" strokeWidth="2"/></svg></ScoreTile>
+              <ScoreTile n="03"><KeyboardStudy/></ScoreTile>
+              <ScoreTile n="04"><svg viewBox="0 0 100 100"><path d="M50 10 C30 27 18 45 24 68 C28 87 72 87 76 68 C82 45 70 27 50 10Z" fill="#343630"/><circle cx="50" cy="54" r="15" fill="#c8c5b8"/></svg></ScoreTile>
+              <ScoreTile n="05"><AcousticGuitar className="tile-mini-guitar"/></ScoreTile>
+              <ScoreTile n="06"><svg viewBox="0 0 100 100"><path d="M14 28 H86 M14 40 H86 M14 52 H86 M14 64 H86" stroke="#55564f" strokeWidth="2"/><path d="M30 20 V77 M62 20 V77" stroke="#222" strokeWidth="3"/></svg></ScoreTile>
+              <ScoreTile n="07"><svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="36" fill="#282a26"/><circle cx="50" cy="50" r="10" fill="#b8b6aa"/><circle cx="50" cy="50" r="30" fill="none" stroke="#b8b6aa" strokeDasharray="1 4" strokeWidth="3"/></svg></ScoreTile>
+              <ScoreTile n="08"><svg viewBox="0 0 100 100"><path d="M12 75 Q32 10 52 75 T92 75" fill="none" stroke="#242620" strokeWidth="4"/><path d="M12 83 H92" stroke="#8a8b80"/></svg></ScoreTile>
+              <ScoreTile n="09"><svg viewBox="0 0 100 100"><path d="M28 18 V77 M28 18 L70 12 V70" stroke="#20211d" strokeWidth="5"/><ellipse cx="18" cy="77" rx="13" ry="8" fill="#222"/><ellipse cx="60" cy="70" rx="13" ry="8" fill="#222"/></svg></ScoreTile>
             </div>
+            <div className="social-copy">
+              <div className="social-instagram"><Instagram size={16}/><span>Follow the notes</span></div>
+              <p>Little things add up: a new chord, a familiar melody, a song played all the way through. This is where the practice happens — one note at a time.</p>
+              <a href="#contact" className="social-button">COME MAKE MUSIC <ArrowUpRight size={13}/></a>
+            </div>
+            <div className="social-guitar"><ElectricGuitar/><span>MAKE IT YOURS.</span></div>
           </div>
-          <div className="gallery-bottom"><span>THE NEXT NOTE IS YOURS.</span><a href="#contact">COME MAKE IT <ArrowUpRight size={14}/></a></div>
         </section>
 
-        <section className="contact-section section-pad" id="contact">
-          <div className="section-label"><span>05</span><span>YOUR FIRST STEP</span></div>
-          <div className="contact-layout">
-            <div className="contact-copy"><p className="eyebrow"><span/> LET'S START WITH HELLO</p><h2>Let's make<br/><em>some music.</em></h2><p>Tell us what you'd like to learn. We'll help you figure out the next step.</p>
-              <div className="direct-contact">
-                <a href={"tel:+"+phone}><Phone size={16}/><span><small>CALL NAVEEN</small>+91 90286 71906</span><ArrowUpRight size={15}/></a>
-                <a href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={16}/><span><small>WHATSAPP</small>Start a conversation</span><ArrowUpRight size={15}/></a>
-              </div>
-            </div>
+        <section className="contact-section" id="contact">
+          <div className="contact-heading"><span>05 / SAY HELLO</span><h2>Let's talk music.</h2></div>
+          <div className="contact-grid">
+            <div className="contact-intro"><p>Have a question about lessons, timings or fees? Send a note and we'll help you find the right place to begin.</p><a href={"tel:+"+phone}><Phone size={15}/> +91 90286 71906</a><a href={whatsapp} target="_blank" rel="noreferrer"><MessageCircle size={15}/> WhatsApp us</a></div>
             <form className="enquiry-form" onSubmit={submit}>
-              <p className="form-intro">A NOTE TO US</p>
-              <label>Your name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="How should we call you?"/></label>
-              <label>Phone number<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="+91"/></label>
-              <label>I'm interested in<select value={form.interest} onChange={e=>setForm({...form,interest:e.target.value})}>{instruments.map(item=><option key={item.number}>{item.name}</option>)}<option>Not sure yet</option></select></label>
-              <label>Anything you'd like us to know<textarea rows="3" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="Your musical curiosity starts here..."/></label>
-              <button className="form-submit" type="submit"><span>{sent?"OPEN WHATSAPP AGAIN":"SEND YOUR ENQUIRY"}</span><Send size={16}/></button>
-              <small className="form-note">This opens a message in WhatsApp. No information is stored on this website.</small>
+              <label>Name<input required value={form.name} onChange={e=>setForm({...form,name:e.target.value})} placeholder="Your name"/></label>
+              <label>Phone<input required type="tel" value={form.phone} onChange={e=>setForm({...form,phone:e.target.value})} placeholder="+91"/></label>
+              <label>Interested in<select value={form.interest} onChange={e=>setForm({...form,interest:e.target.value})}><option>Acoustic guitar</option><option>Keyboard</option><option>Piano</option><option>Vocals</option><option>Not sure yet</option></select></label>
+              <label>Message<textarea rows="2" value={form.message} onChange={e=>setForm({...form,message:e.target.value})} placeholder="What would you like to learn?"/></label>
+              <button type="submit"><span>{sent?"OPEN WHATSAPP":"SEND ENQUIRY"}</span><Send size={14}/></button>
+              <small>Your message opens in WhatsApp. No information is stored on this website.</small>
             </form>
           </div>
         </section>
       </main>
 
       <footer className="site-footer">
-        <div className="footer-main"><a className="brand footer-brand" href="#home"><span className="brand-symbol">n<span>.</span></span><span className="brand-copy">NAVEEN'S <small>MUSICAL CLASS</small></span></a><p>Find your sound.<br/><em>Make it yours.</em></p><a href="#home" className="back-top">BACK TO TOP <ArrowUpRight size={14}/></a></div>
-        <div className="footer-meta"><span>© 2026 NAVEEN'S MUSICAL CLASS</span><span>MADE FOR THE LOVE OF MUSIC</span><a href={whatsapp} target="_blank" rel="noreferrer">SAY HELLO ON WHATSAPP <ArrowUpRight size={12}/></a></div>
+        <div className="footer-strings" aria-hidden="true"><svg viewBox="0 0 1400 240" preserveAspectRatio="none"><path d="M0 40 Q350 100 700 20 T1400 80"/><path d="M0 75 Q350 135 700 55 T1400 115"/><path d="M0 110 Q350 170 700 90 T1400 150"/><path d="M0 145 Q350 205 700 125 T1400 185"/></svg></div>
+        <div className="footer-main"><div className="footer-brand"><span className="brand-mark">M</span><span>NAVEEN'S MUSICAL CLASS</span></div><div className="footer-contact"><a href={"tel:+"+phone}>+91 90286 71906</a><a href={whatsapp} target="_blank" rel="noreferrer">WHATSAPP <ArrowUpRight size={12}/></a><a href="#home">BACK TO TOP ↑</a></div></div>
+        <div className="footer-bottom"><span>© 2026 NAVEEN'S MUSICAL CLASS</span><span>LEARN · LISTEN · PLAY</span><span>PUNE / INDIA</span></div>
       </footer>
-      <a className="whatsapp-float" href={whatsapp} target="_blank" rel="noreferrer" aria-label="Message Naveen's Musical Class on WhatsApp"><MessageCircle size={17}/><span>WHATSAPP</span></a>
+      <a className="whatsapp-float" href={whatsapp} target="_blank" rel="noreferrer" aria-label="WhatsApp Naveen's Musical Class"><MessageCircle size={16}/><span>WHATSAPP</span></a>
     </div>
   );
 }
