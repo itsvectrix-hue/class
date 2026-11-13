@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { ArrowDownRight, ArrowUpRight, ArrowRight, Clock3, Guitar, Menu, Music2, Piano, X, Phone, MessageCircle, Send } from "lucide-react";
-import { SplitText, ScrollReveal, Magnet, ScrollFloat, CircularText, SpotlightCard } from "./components/ReactBits";
+import { SplitText, ScrollReveal, Magnet, ScrollFloat, CircularText } from "./components/ReactBits";
 
 const phone = "919028671906";
 const whatsapp = "https://wa.me/" + phone;
@@ -23,9 +23,9 @@ function GuitarArtwork() {
         <path d="M292 105 C278 81 282 53 305 31 C328 9 361 13 381 37 C399 60 395 89 380 111 L372 205 L388 297 C404 336 456 348 466 408 C478 483 438 542 375 557 C322 570 269 550 246 514 C216 469 233 410 261 376 C282 350 298 340 302 302 L294 205Z" fill="#a2aa91" stroke="#1a1a1a" strokeWidth="2.4"/>
         <path d="M303 34 C323 13 355 12 378 36 L367 203 L310 203Z" fill="#252823" stroke="#1a1a1a" strokeWidth="2"/>
         <path d="M307 203 L370 203 L379 350 L299 350Z" fill="#30352e" stroke="#1a1a1a" strokeWidth="2"/>
-        {Array.from({length:13},(_,i)=><path key={i} d={\`M304 \${215+i*10.5} L375 \${215+i*10.5}\`} stroke="#b3b7a8" strokeWidth="1.2"/>)}
+        {Array.from({length:13},(_,i)=><path key={i} d={"M304 " + (215+i*10.5) + " L375 " + (215+i*10.5)} stroke="#b3b7a8" strokeWidth="1.2"/>)}
         <path d="M302 31 L300 5 L385 5 L382 34" fill="#252823" stroke="#1a1a1a" strokeWidth="2"/>
-        {Array.from({length:6},(_,i)=><g key={i}><path d={\`M\${309+i*12} 8 L\${309+i*12} 514\`} stroke="#e8e6da" strokeWidth={i===2||i===3?1.6:1} opacity=".92"/><circle cx={308+i*13} cy="21" r="4" fill="#c7c7b8" stroke="#252823"/><circle cx={308+i*13} cy="514" r="2" fill="#d7d5c7"/></g>)}
+        {Array.from({length:6},(_,i)=><g key={i}><path d={"M" + (309+i*12) + " 8 L" + (309+i*12) + " 514"} stroke="#e8e6da" strokeWidth={i===2||i===3?1.6:1} opacity=".92"/><circle cx={308+i*13} cy="21" r="4" fill="#c7c7b8" stroke="#252823"/><circle cx={308+i*13} cy="514" r="2" fill="#d7d5c7"/></g>)}
         <path d="M257 405 C278 375 312 364 340 373 C378 385 399 418 400 455 C402 497 370 529 331 529 C285 529 246 497 244 455 C243 435 248 418 257 405Z" fill="#d6d7cb" stroke="#1a1a1a" strokeWidth="2"/>
         <circle cx="327" cy="452" r="54" fill="#33382f" stroke="#1a1a1a" strokeWidth="2.5"/>
         <circle cx="327" cy="452" r="44" fill="#1b1d19" stroke="#c7c8b8" strokeWidth="2"/>
