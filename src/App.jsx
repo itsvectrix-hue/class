@@ -118,7 +118,7 @@ function App() {
               <div className="schedule-item"><div className="schedule-icon"><Clock3/></div><div><span>CLASS TIMINGS</span><h3>Flexible batches</h3><p>Ask about current weekday and weekend availability.</p></div><ArrowUpRight className="schedule-arrow"/></div>
               <div className="schedule-item"><div className="schedule-icon"><Music2/></div><div><span>COURSE FEES</span><h3>Made clear, upfront</h3><p>Fees depend on the instrument and class plan. Contact us for details.</p></div><ArrowUpRight className="schedule-arrow"/></div>
               <div className="schedule-item"><div className="schedule-icon"><Sparkles/></div><div><span>NEW TO MUSIC?</span><h3>Let's find your starting point</h3><p>Tell us what you'd like to learn and we'll guide you from there.</p></div><ArrowUpRight className="schedule-arrow"/></div>
-            </div>
+            </FlexCarousel>
           </div>
         </section>
 
