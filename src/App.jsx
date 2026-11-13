@@ -53,10 +53,10 @@ function App() {
           <div className="hero-meta"><span>EST. FOR THE LOVE OF MUSIC</span><span>01 — 05 / THE EXPERIENCE</span></div>
           <div className="hero-copy">
             <p className="eyebrow"><span className="eyebrow-line"/> YOUR FIRST NOTE STARTS HERE</p>
-            <h1><span className="hero-line"><SplitText>MAKE</SplitText></span><span className="hero-line hero-line-outline"><DecryptedText>YOUR</DecryptedText></span><span className="hero-line"><GradientText>MUSIC.</GradientText></span></h1>
+            <AnimatedContent><h1><span className="hero-line"><SplitText>MAKE</SplitText></span><span className="hero-line hero-line-outline"><DecryptedText>YOUR</DecryptedText></span><span className="hero-line"><GradientText>MUSIC.</GradientText></span></h1></AnimatedContent>
             <div className="hero-bottom">
-              <div className="hero-description"><BlurText>Learn an instrument. Find your rhythm. Discover what you can create.</BlurText></div>
-              <div className="hero-actions"><Magnet><a className="button button-light" href="#courses">EXPLORE CLASSES <ArrowUpRight size={16}/></a></Magnet><a className="text-link" href="#about">OUR APPROACH <ArrowDown size={14}/></a></div>
+              <div className="hero-description"><FadeContent><BlurText><TextType>Learn an instrument. Find your rhythm. Discover what you can create.</TextType></BlurText></FadeContent></div>
+              <div className="hero-actions"><Magnet><ClickSpark><a className="button button-light" href="#courses"><ShinyText>EXPLORE CLASSES</ShinyText> <ArrowUpRight size={16}/></a></ClickSpark></Magnet><a className="text-link" href="#about">OUR APPROACH <ArrowDown size={14}/></a></div>
             </div>
           </div>
           <div className="hero-visual">
@@ -79,8 +79,8 @@ function App() {
             </div>
           </div>
           <div className="stats-row">
-            <div className="stat"><strong><CountUp to={4} suffix="+" /></strong><span>WAYS TO MAKE MUSIC</span></div>
-            <div className="stat"><strong><CountUp to={1} /></strong><span>NOTE AT A TIME</span></div>
+            <ScrollFloat><div className="stat"><strong><CountUp to={4} suffix="+" /></strong><span>WAYS TO MAKE MUSIC</span></div>
+            <div className="stat"><strong><CountUp to={1} /></strong><span>NOTE AT A TIME</span></div></ScrollFloat>
             <div className="stat stat-quote"><span>OUR PHILOSOPHY</span><p>Practice with purpose.<br/>Play with joy.</p></div>
           </div>
         </section>
@@ -114,7 +114,7 @@ function App() {
           <div className="section-kicker"><span>03 / PLAN YOUR PRACTICE</span><span>TIME WELL SPENT</span></div>
           <div className="schedule-grid">
             <div><h2 className="display-heading">Make room<br/>for <em>music.</em></h2><p className="schedule-intro">The best class is one that fits your life. Get in touch to find the right batch and a fee plan for your learning goals.</p><a className="button button-dark" href={whatsapp + "?text=Hello%2C%20please%20share%20class%20timings%20and%20fees."} target="_blank" rel="noreferrer">ASK ABOUT BATCHES <ArrowUpRight size={16}/></a></div>
-            <div className="schedule-panel">
+            <FlexCarousel className="schedule-panel">
               <div className="schedule-item"><div className="schedule-icon"><Clock3/></div><div><span>CLASS TIMINGS</span><h3>Flexible batches</h3><p>Ask about current weekday and weekend availability.</p></div><ArrowUpRight className="schedule-arrow"/></div>
               <div className="schedule-item"><div className="schedule-icon"><Music2/></div><div><span>COURSE FEES</span><h3>Made clear, upfront</h3><p>Fees depend on the instrument and class plan. Contact us for details.</p></div><ArrowUpRight className="schedule-arrow"/></div>
               <div className="schedule-item"><div className="schedule-icon"><Sparkles/></div><div><span>NEW TO MUSIC?</span><h3>Let's find your starting point</h3><p>Tell us what you'd like to learn and we'll guide you from there.</p></div><ArrowUpRight className="schedule-arrow"/></div>
