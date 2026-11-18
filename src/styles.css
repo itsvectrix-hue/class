@@ -18,3 +18,47 @@
 @media(max-width:760px){:root{scroll-padding-top:72px}.header-inner{width:100%;height:72px;padding:0 22px}.brand img{width:35px;height:35px}.brand-copy strong{font-size:18px}.menu-toggle{display:grid}.main-nav{position:fixed;top:72px;right:0;left:0;display:none;flex-direction:column;align-items:stretch;gap:0;padding:11px 24px 23px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 16px 22px rgba(10,31,68,.12)}.main-nav.is-open{display:flex}.main-nav a{min-height:47px;display:flex;align-items:center;border-bottom:1px solid rgba(10,31,68,.08)}.main-nav .nav-contact{justify-content:center;margin-top:12px;border:1px solid var(--navy)}.hero{grid-template-columns:1fr;gap:28px;min-height:auto;padding:58px 24px}.hero-content{max-width:620px}.hero h1{font-size:clamp(48px,10vw,66px)}.hero-description{max-width:530px;margin-top:20px;font-size:14px}.hero-actions{gap:17px 20px;margin-top:26px}.hero-note{margin-top:28px}.hero-visual{width:100%;height:auto;min-height:0;aspect-ratio:1.35;max-width:none}.hero-visual img{object-position:center 52%}.hero-bottomline{right:24px;bottom:19px;left:24px}.service-strip{justify-content:flex-start;gap:13px 22px;padding:18px 24px}.service-strip span{font-size:10px}.section-pad{padding:70px 24px}.section-heading{margin-bottom:31px}.heading-row{display:grid;gap:16px;align-items:start}.heading-row h2,.steps-heading h2{font-size:clamp(38px,8vw,52px)}.heading-row>p{max-width:510px}.instrument-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 14px}.instrument-photo{aspect-ratio:.86}.instrument-name-row strong{font-size:20px}.instrument-description{font-size:11px}.about-section{grid-template-columns:1fr;gap:34px;padding:70px 24px}.about-photo{min-height:0;aspect-ratio:1.3}.about-copy h2,.faq-intro h2{font-size:48px}.steps-grid{grid-template-columns:1fr}.step,.step+.step{min-height:0;padding:22px 0;border-left:0}.step+.step{border-top:1px solid var(--line)}.step h3{margin-top:12px}.faq-section{grid-template-columns:1fr;gap:30px}.faq-intro>div{max-width:550px}.contact-section{grid-template-columns:1fr;gap:38px;padding:70px 24px}.contact-copy h2{font-size:52px}.contact-form-wrap{width:100%}.site-footer{padding:30px 24px 20px}.footer-main{align-items:flex-start;flex-direction:column;gap:16px}.footer-contact{justify-items:start}.footer-bottom{align-items:flex-start;flex-direction:column}}
 @media(max-width:420px){.header-inner{padding:0 17px}.hero{padding:48px 18px 52px}.hero h1{font-size:clamp(43px,11vw,54px)}.hero-actions{align-items:flex-start;flex-direction:column}.hero-bottomline{right:18px;left:18px;font-size:7px}.service-strip{padding-right:18px;padding-left:18px}.section-pad{padding:60px 18px}.instrument-grid{gap:24px 12px}.instrument-name-row strong{font-size:18px}.instrument-arrow{right:9px;bottom:9px;width:31px;height:31px}.about-section{padding:60px 18px}.faq-section{gap:22px}.contact-section{padding:60px 18px}.form-row{grid-template-columns:1fr;gap:2px}.enquiry-form{padding:20px 17px}.site-footer{padding-right:18px;padding-left:18px}.footer-bottom nav{gap:10px 16px}.floating-whatsapp{right:14px;bottom:14px;width:48px;height:48px}}
 @media(hover:none){.instrument-card:hover .instrument-photo img{transform:none}}
+
+/* React Bits integration — restrained, brand-matched effects */
+.reveal { opacity: 1; transform: none; transition: none; }
+.rb-eyebrow { margin: 0 0 25px; gap: 11px; color: var(--gold-light); }
+.rb-eyebrow::before { content: ""; display: block; flex: 0 0 27px; width: 27px; height: 1px; background: var(--gold); }
+.hero-title { display: flex; flex-direction: column; align-items: flex-start; gap: 0; margin: 0; }
+.hero-title-line {
+  display: flex !important; flex-wrap: wrap; margin: 0; padding: 0;
+  color: var(--paper) !important; font: 400 clamp(54px,6vw,86px)/1.03 "Playfair Display",Georgia,serif;
+  letter-spacing: -.045em;
+}
+.hero-title-line > span { margin-right: .22em; }
+.hero-title-accent {
+  display: inline-flex; justify-content: flex-start; margin-top: 2px;
+  max-width: 100%; font: italic 400 clamp(54px,6vw,86px)/1.03 "Playfair Display",Georgia,serif;
+  letter-spacing: -.045em; white-space: normal;
+}
+.hero-title-accent .gradient-text__inner,
+.hero-title-accent .gradient-text__content { display: inline-block; }
+.magnet-cta { display: inline-block; flex: 0 0 auto; }
+.magnet-cta > div { display: inline-block; }
+.instrument-card { width: 100%; }
+.instrument-spotlight {
+  display: block; width: 100%; min-height: 100%;
+  overflow: hidden; isolation: isolate; border-radius: 0;
+}
+.instrument-spotlight .instrument-photo { position: relative; z-index: 0; }
+.instrument-spotlight .instrument-description { color: var(--muted); }
+.faq-answer { overflow: hidden; }
+.faq-answer p { max-width: 680px; margin: -4px 0 23px; color: #5e6a7d; font-size: 13px; line-height: 1.8; }
+
+@media (max-width: 1100px) {
+  .hero-title-line, .hero-title-accent { font-size: clamp(50px,6.4vw,72px); }
+}
+@media (max-width: 760px) {
+  .hero-title-line, .hero-title-accent { font-size: clamp(48px,10vw,66px); }
+  .magnet-cta { width: auto; }
+}
+@media (max-width: 420px) {
+  .hero-title-line, .hero-title-accent { font-size: clamp(43px,11vw,54px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
