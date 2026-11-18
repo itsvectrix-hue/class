@@ -149,7 +149,7 @@ function App() {
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const delay = reducedMotion ? 120 : 1120;
+    const delay = reducedMotion ? 120 : 1200;
     const timer = window.setTimeout(() => setShowLoader(false), delay);
     return () => window.clearTimeout(timer);
   }, []);
