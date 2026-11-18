@@ -1,35 +1,37 @@
-# Naveen's Musical Class
+# Tonexa Music Academy
 
-A React and Vite website for music lesson enquiries.
+A React and Vite website for home music tuition enquiries.
+
+## Public information
+- Academy name: Tonexa Music Academy
+- Contact email: tonexa.music.acadmy@gmail.com
+- Teaching model: Home tuition only
+- Listed lessons: Keyboard, Guitar, Drums and Vocals
+- Brand colours: Deep Navy Blue (#0A1F44), Rich Gold (#C9A227), Off White (#F9F9F9)
 
 ## Pages
-
-- Home: lessons, practice information and contact form.
-- Terms of use: \`/terms\`
-- Privacy policy: \`/privacy\`
-- Custom missing page: \`404.html\`
+- Home: lesson information, home tuition details and an enquiry form.
+- Terms of use: `/terms`
+- Privacy policy: `/privacy`
+- Custom missing page: `404.html`
 
 ## Enquiries
+The form prepares an email draft addressed to the academy. It does not send the email automatically, book a lesson, or store enquiry details in a website database. Visitors review the message and choose whether to send it.
 
-The form asks for a name and lesson interest. It prepares a WhatsApp message for +91 90286 71906 without asking the visitor to type their phone number. The website does not store enquiry details. Visitors review the message and choose whether to send it in WhatsApp.
-
-Timings, fees and class arrangements need to be confirmed directly with Naveen.
+Lesson availability, travel arrangements, timings and fees must be confirmed directly with the academy.
 
 ## Run locally
-
-\`\`\`sh
+```sh
 npm install
 npm run dev
-\`\`\`
+```
 
 ## Build
-
-\`\`\`sh
+```sh
 npm run build
 npm run preview
-\`\`\`
+```
 
 ## Deployment
-
-- Vercel project: \`naveens-musicialclass\`
 - GitHub repository: [itsvectrix-hue/class](https://github.com/itsvectrix-hue/class)
+- Hosting configuration: Vercel
