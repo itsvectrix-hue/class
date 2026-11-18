@@ -324,7 +324,7 @@ function App() {
               </label>
 
               <label>
-                Your area <span className="optional-label">Optional</span>
+                Your area (optional)
                 <input
                   name="area"
                   value={form.area}
@@ -334,7 +334,7 @@ function App() {
               </label>
 
               <label className="message-field">
-                Message <span className="optional-label">Optional</span>
+                Message (optional)
                 <textarea
                   name="message"
                   rows="3"
