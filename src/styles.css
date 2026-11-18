@@ -342,7 +342,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .home-copy { max-width: 560px; }
 .home-copy h2,
 .contact-copy h2 { color: var(--navy); }
-.home-copy > p:not(.eyebrow) {
+.home-copy > p {
   max-width: 500px;
   margin: 23px 0 0;
   color: #4D5C74;
@@ -473,7 +473,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .footer-brand .brand-mark { color: var(--paper); }
 .footer-note {
   margin: 0;
-  color: rgba(249,249,249,.72);
+  color: #E6EAF1;
   font-size: 13px;
 }
 .footer-email {
@@ -533,7 +533,7 @@ button { -webkit-tap-highlight-color: transparent; }
   right: 0;
   left: 0;
   height: 1px;
-  background: rgba(249,249,249,.48);
+  background: #8997AD;
   transform: scaleX(0);
   transform-origin: left center;
   animation: staff-draw .72s ease forwards;
@@ -554,7 +554,7 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .entry-loader-content p {
   margin: 0;
-  color: rgba(249,249,249,.78);
+  color: #E6EAF1;
   font: 15px var(--serif);
 }
 @keyframes staff-draw { to { transform: scaleX(1); } }
@@ -594,7 +594,6 @@ button { -webkit-tap-highlight-color: transparent; }
     gap: 0;
     padding: 10px 6% 20px;
     background: var(--paper);
-    box-shadow: 0 12px 18px rgba(10,31,68,.08);
   }
   .main-nav.is-open { display: flex; flex-direction: column; }
   .main-nav a { min-height: 48px; padding: 14px 0; }
