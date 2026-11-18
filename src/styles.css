@@ -364,7 +364,7 @@ button { -webkit-tap-highlight-color: transparent; }
   background: var(--paper);
 }
 .contact-copy { max-width: 470px; }
-.contact-copy > p:not(.eyebrow) {
+.contact-copy > p {
   max-width: 425px;
   margin: 22px 0 0;
   color: #4D5C74;
