@@ -51,13 +51,13 @@ button { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(90deg, #06162D 0%, rgba(6,22,45,.98) 23%, rgba(6,22,45,.87) 37%, rgba(6,22,45,.50) 51%, rgba(6,22,45,.06) 76%, rgba(6,22,45,.12) 100%);
   content: "";
 }
-.hero-inner { position: relative; width: 100%; max-width: 1450px; margin: 0 auto; }
+.hero-inner { position: relative; z-index: 1; width: 100%; max-width: 1450px; margin: 0 auto; }
 .hero-copy { max-width: 710px; }
 .hero-overline { display: flex; align-items: center; gap: 12px; margin: 0 0 24px; color: var(--gold-light); font-size: 13px; font-weight: 700; letter-spacing: .25em; }
 .hero-overline i { display: inline-block; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
-.hero h1 { margin: 0; color: #F7F5F0; font: 400 clamp(58px, 6.6vw, 102px)/.93 Georgia, "Times New Roman", serif; letter-spacing: -.045em; text-wrap: balance; }
+.hero h1 { margin: 0; color: #F7F5F0; font: 400 clamp(54px, 6vw, 92px)/1.04 "Playfair Display", Georgia, "Times New Roman", serif; letter-spacing: -.02em; text-wrap: balance; }
 .hero h1 .gold-word { color: #D6A63D; }
-.hero-tagline { margin: 21px 0 0; color: #F5F0E7; font: 400 clamp(25px, 2.3vw, 34px)/1.1 Georgia, "Times New Roman", serif; }
+.hero-tagline { margin: 21px 0 0; color: #F5F0E7; font: 400 clamp(25px, 2.3vw, 34px)/1.1 "Playfair Display", Georgia, "Times New Roman", serif; }
 .hero-description { margin: 18px 0 0; color: #E0E5EC; font-size: 16px; line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 28px; margin-top: 28px; }
 .hero-button { display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 56px; padding: 0 29px; border-radius: 32px; color: #101C30; background: linear-gradient(115deg, #E6B94F, #C9941F); font-size: 15px; font-weight: 700; box-shadow: 0 10px 34px rgba(201,162,39,.15); transition: transform .2s ease, box-shadow .2s ease; }
@@ -80,7 +80,7 @@ button { -webkit-tap-highlight-color: transparent; }
 
 .instruments-section { display: grid; grid-template-columns: minmax(250px, .72fr) minmax(0, 1.8fr); align-items: center; gap: clamp(28px, 4vw, 66px); max-width: 1600px; margin: 0 auto; padding: 40px clamp(30px, 6.5vw, 108px) 94px; background: var(--paper); }
 .section-kicker { margin: 0 0 17px; color: #B18A26; font-size: 12px; font-weight: 700; letter-spacing: .22em; }
-.instruments-heading h2, .about-copy h2, .faq-heading h2, .contact-copy h2 { margin: 0; color: var(--navy); font: 400 clamp(34px, 3.6vw, 54px)/1.08 Georgia, "Times New Roman", serif; letter-spacing: -.028em; }
+.instruments-heading h2, .about-copy h2, .faq-heading h2, .contact-copy h2 { margin: 0; color: var(--navy); font: 400 clamp(34px, 3.6vw, 54px)/1.08 "Playfair Display", Georgia, "Times New Roman", serif; letter-spacing: -.028em; }
 .section-description { max-width: 390px; margin: 18px 0 0; color: #5A677C; font-size: 14px; line-height: 1.75; }
 .underlined-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 23px; padding-bottom: 7px; border-bottom: 1px solid var(--gold); color: var(--navy); font-size: 14px; font-weight: 600; }
 .underlined-link svg { color: #A9811E; }
@@ -95,14 +95,14 @@ button { -webkit-tap-highlight-color: transparent; }
 .instrument-card.is-selected .instrument-card-image { outline: 2px solid var(--gold); outline-offset: 3px; }
 .card-index { position: absolute; right: 12px; bottom: 10px; color: rgba(249,249,249,.57); font-size: 10px; letter-spacing: .15em; }
 .instrument-card-copy { display: grid; gap: 6px; padding: 13px 1px 0; }
-.instrument-card-copy strong { font: 400 19px Georgia, "Times New Roman", serif; }
+.instrument-card-copy strong { font: 400 19px "Playfair Display", Georgia, "Times New Roman", serif; }
 .instrument-card-copy > span { min-height: 36px; color: #69758A; font-size: 11px; line-height: 1.5; }
 .instrument-card-copy small { display: inline-flex; align-items: center; gap: 6px; color: #9A7418; font-size: 11px; font-weight: 700; letter-spacing: .04em; }
 
 .about-section { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 8%; padding: 92px clamp(30px, 10vw, 160px); background: var(--cream); }
 .about-art { display: grid; min-height: 340px; place-items: center; background: var(--navy); overflow: hidden; }
 .about-art-inner { display: grid; width: 80%; justify-items: center; gap: 20px; }
-.about-art-inner > p { margin: 0; color: var(--gold); font: 400 34px Georgia, "Times New Roman", serif; letter-spacing: .1em; }
+.about-art-inner > p { margin: 0; color: var(--gold); font: 400 34px "Playfair Display", Georgia, "Times New Roman", serif; letter-spacing: .1em; }
 .about-art-inner > span { color: #E2E7EF; font-size: 10px; letter-spacing: .24em; }
 .about-wave { width: 100%; height: 82px; }
 .about-wave .rb-waveform { gap: 7px; }
@@ -150,7 +150,7 @@ button { -webkit-tap-highlight-color: transparent; }
 
 .site-footer { padding: 35px clamp(28px, 7vw, 110px) 22px; color: var(--paper); background: #06162D; }
 .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 22px; padding-bottom: 26px; }
-.footer-top > p { margin: 0; color: #E2E7EF; font: 400 20px Georgia, "Times New Roman", serif; }
+.footer-top > p { margin: 0; color: #E2E7EF; font: 400 20px "Playfair Display", Georgia, "Times New Roman", serif; }
 .footer-top > a:last-child { display: inline-flex; align-items: center; gap: 9px; max-width: 100%; font-size: 13px; overflow-wrap: anywhere; }
 .footer-top > a:last-child svg { flex: 0 0 auto; color: var(--gold); }
 .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding-top: 18px; border-top: 1px solid #35465F; color: #C6CEDB; font-size: 11px; }
@@ -302,3 +302,5 @@ button { -webkit-tap-highlight-color: transparent; }
   content: "";
   pointer-events: none;
 }
+
+.hero-inner { z-index: 1; }

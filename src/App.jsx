@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowDown, ArrowRight, ArrowUpRight, Drum, Guitar, House,
-  Mail, Menu, Mic, Music2, Piano, Star, X
+  MessageCircle, Mail, Menu, Mic, Music2, Piano, Star, X
 } from "lucide-react";
 import {
   Accordion, FadeContent, Magnet, Ripple, ScrollProgress,
@@ -10,6 +10,10 @@ import {
 
 const emailAddress = "tonexa.music.acadmy@gmail.com";
 const emailUrl = "mailto:" + emailAddress;
+const whatsappNumber = "919028671906";
+const whatsappDisplay = "+91 90286 71906";
+const whatsappUrl = (text = "Hello Tonexa Music Academy, I would like to ask about home music lessons.") =>
+  "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(text);
 
 const lessons = [
   { name: "Keyboard", description: "Melody, chords and musical foundations.", icon: Piano, tone: "keys" },
@@ -149,7 +153,10 @@ function Footer() {
       <div className="footer-top">
         <Brand footer />
         <p>Learn. Play. Grow.</p>
-        <a href={emailUrl}><Mail size={16} /> {emailAddress}</a>
+        <div className="footer-contacts">
+          <a href={emailUrl}><Mail size={16} /> {emailAddress}</a>
+          <a href={whatsappUrl()} target="_blank" rel="noopener noreferrer"><MessageCircle size={16} /> WhatsApp {whatsappDisplay}</a>
+        </div>
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Tonexa Music Academy</span>
@@ -184,6 +191,20 @@ function App() {
     setPreparedMessage("");
   };
 
+  const sendWhatsApp = (event) => {
+    const formEl = event.currentTarget.closest("form");
+    if (formEl && !formEl.reportValidity()) return;
+    const text = [
+      "Hello Tonexa Music Academy,",
+      "Name: " + form.name.trim(),
+      "Interested in: " + form.lesson,
+      "Home tuition area: " + (form.area.trim() || "Not provided"),
+      "Phone: " + (form.phone.trim() || "Not provided"),
+      "Message: " + (form.message.trim() || "Please share the lesson details."),
+    ].join("\n");
+    window.open(whatsappUrl(text), "_blank", "noopener,noreferrer");
+  };
+
   const submitEnquiry = (event) => {
     event.preventDefault();
     const message = [
@@ -204,6 +225,9 @@ function App() {
   return (
     <>
       <ScrollProgress />
+      <a className="whatsapp-float" href={whatsappUrl()} target="_blank" rel="noopener noreferrer" aria-label={"Chat on WhatsApp " + whatsappDisplay}>
+        <MessageCircle size={26} aria-hidden="true" />
+      </a>
       {showLoader && <EntryLoader />}
       <div className="site-shell">
         <a className="skip-link" href="#main-content">Skip to content</a>
@@ -211,6 +235,26 @@ function App() {
           <Header />
           <main id="main-content">
             <section className="hero" id="home">
+              <svg className="hero-notes" viewBox="0 0 1000 600" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+                <defs>
+                  <linearGradient id="arcGold" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stopColor="#E5BC59" stopOpacity="0" />
+                    <stop offset=".5" stopColor="#E5BC59" stopOpacity=".85" />
+                    <stop offset="1" stopColor="#C9A227" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <path className="hero-arc" d="M470 330 C500 120 760 40 930 150" fill="none" stroke="url(#arcGold)" strokeWidth="2.5" />
+                <path d="M330 380 C560 250 800 280 1000 120" fill="none" stroke="url(#arcGold)" strokeWidth="1" opacity=".55" />
+                <path d="M360 410 C600 290 820 320 1000 170" fill="none" stroke="url(#arcGold)" strokeWidth="1" opacity=".4" />
+                <g fill="#E5BC59">
+                  <text className="hero-note" x="900" y="105" fontSize="46" style={{ "--d": "0s" }}>&#9835;</text>
+                  <text className="hero-note" x="955" y="190" fontSize="38" style={{ "--d": "-1.4s" }}>&#9834;</text>
+                  <text className="hero-note" x="690" y="150" fontSize="34" style={{ "--d": "-2.6s" }}>&#9834;</text>
+                  <text className="hero-note" x="560" y="250" fontSize="30" style={{ "--d": "-.8s" }}>&#9834;</text>
+                  <text className="hero-note" x="470" y="300" fontSize="26" style={{ "--d": "-3.2s" }}>&#9834;</text>
+                  <text className="hero-note" x="400" y="470" fontSize="34" style={{ "--d": "-2s" }}>&#9834;</text>
+                </g>
+              </svg>
               <div className="hero-inner">
                 <ScrollReveal className="hero-copy">
                   <p className="hero-overline">LEARN <i /> PLAY <i /> GROW</p>
@@ -225,6 +269,7 @@ function App() {
                       <Ripple as="a" href="#contact" className="hero-button">Enquire Now <ArrowRight size={17} /></Ripple>
                     </Magnet>
                     <a className="hero-email" href={emailUrl}><Mail size={22} /><span>{emailAddress}</span></a>
+                    <a className="hero-email" href={whatsappUrl()} target="_blank" rel="noopener noreferrer"><MessageCircle size={22} /><span>{whatsappDisplay}</span></a>
                   </div>
                   <p className="home-only-note">HOME TUITION ONLY</p>
                 </ScrollReveal>
@@ -234,8 +279,20 @@ function App() {
             <FeatureStrip />
           </main>
           <svg className="hero-wave" viewBox="0 0 1600 95" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="waveGold" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#C9A227" stopOpacity="0" />
+                <stop offset=".25" stopColor="#E5BC59" stopOpacity=".5" />
+                <stop offset=".8" stopColor="#E5BC59" stopOpacity=".95" />
+                <stop offset="1" stopColor="#C9A227" stopOpacity=".2" />
+              </linearGradient>
+              <filter id="waveGlow" x="-5%" y="-100%" width="110%" height="300%"><feGaussianBlur stdDeviation="3" /></filter>
+            </defs>
+            <path d="M0 8 C300 84 560 91 820 78 C1110 64 1350 79 1600 4" fill="none" stroke="url(#waveGold)" strokeWidth="5" vectorEffect="non-scaling-stroke" filter="url(#waveGlow)" />
+            <path d="M0 8 C300 84 560 91 820 78 C1110 64 1350 79 1600 4" fill="none" stroke="url(#waveGold)" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
             <path d="M0 8 C300 84 560 91 820 78 C1110 64 1350 79 1600 4 L1600 95 L0 95Z" fill="#F9F9F9" />
           </svg>
+          <a className="scroll-cue" href="#instruments" aria-label="Scroll to instruments"><ArrowDown size={18} aria-hidden="true" /></a>
         </div>
 
         <Instruments />
@@ -277,6 +334,7 @@ function App() {
             <h2>Find your<br /><em>musical rhythm.</em></h2>
             <p>Tell us what you would like to learn and where you are based. Your email app will open a draft for you to review and send.</p>
             <a className="contact-email" href={emailUrl}><Mail size={20} /> {emailAddress}</a>
+            <a className="contact-email" href={whatsappUrl()} target="_blank" rel="noopener noreferrer"><MessageCircle size={20} /> WhatsApp {whatsappDisplay}</a>
             <Waveform bars={34} className="contact-wave" />
           </div>
           <SpotlightCard className="form-panel">
@@ -300,7 +358,8 @@ function App() {
                 <textarea name="message" rows="3" maxLength={600} value={form.message} onChange={updateField("message")} placeholder="Experience level, preferred days or questions" />
               </label>
               <Ripple as="button" className="submit-link" type="submit">Prepare email enquiry <ArrowUpRight size={17} /></Ripple>
-              <p className="form-note">This opens a draft to {emailAddress}. Press Send when you are ready.</p>
+              <button type="button" className="whatsapp-submit" onClick={sendWhatsApp}><MessageCircle size={17} /> Enquire on WhatsApp</button>
+              <p className="form-note">Email opens a draft to {emailAddress}. WhatsApp opens a ready message to {whatsappDisplay}. Press Send when you are ready.</p>
               {preparedMessage && <p className="form-status" role="status">If your email app did not open, <a href={preparedMessage}>open the prepared enquiry here</a>.</p>}
             </form>
           </SpotlightCard>
