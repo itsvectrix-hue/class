@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   ArrowUpRight,
-  Check,
   Drum,
   Guitar,
   House,
@@ -19,22 +18,22 @@ const emailUrl = "mailto:" + emailAddress;
 const lessons = [
   {
     name: "Keyboard",
-    detail: "Melody, rhythm, coordination and musical foundations.",
+    detail: "Learn melodies, chords, rhythm and the basics of playing.",
     icon: Music2,
   },
   {
     name: "Guitar",
-    detail: "Chords, strumming, technique and songs you enjoy.",
+    detail: "Work on chords, strumming, technique and songs.",
     icon: Guitar,
   },
   {
     name: "Drums",
-    detail: "Timing, rhythm, coordination and groove.",
+    detail: "Build timing, coordination and a feel for rhythm.",
     icon: Drum,
   },
   {
     name: "Vocals",
-    detail: "Pitch, breathing, expression and confidence.",
+    detail: "Practice pitch, breathing, control and expression.",
     icon: Mic,
   },
 ];
@@ -43,8 +42,16 @@ function EntryLoader() {
   return (
     <div className="entry-loader" role="status" aria-label="Loading Tonexa Music Academy">
       <div className="entry-loader-content">
-        <span className="loader-mark">T<span>.</span></span>
-        <p>{academyName}</p>
+        <span className="loader-wordmark">Tonexa<span>.</span></span>
+        <div className="loader-staff" aria-hidden="true">
+          <span />
+          <span />
+          <span />
+          <span />
+          <span />
+          <Music2 className="loader-note" strokeWidth={1.5} />
+        </div>
+        <p>Music lessons at home</p>
       </div>
     </div>
   );
@@ -72,7 +79,7 @@ function Header() {
     <header className="site-header">
       <a className="brand" href="#home" aria-label="Tonexa Music Academy home" onClick={closeMenu}>
         <span className="brand-mark">T<span>.</span></span>
-        <span className="brand-name">TONEXA<br /><small>MUSIC ACADEMY</small></span>
+        <span className="brand-name">Tonexa<br /><small>Music Academy</small></span>
       </a>
 
       <nav
@@ -84,7 +91,7 @@ function Header() {
         <a href="#home-tuition" onClick={closeMenu}>Home tuition</a>
         <a href="#contact" onClick={closeMenu}>Contact</a>
         <a className="nav-contact" href="#contact" onClick={closeMenu}>
-          Enquire now <ArrowUpRight size={15} aria-hidden="true" />
+          Ask about lessons <ArrowUpRight size={15} aria-hidden="true" />
         </a>
       </nav>
 
@@ -109,18 +116,16 @@ function Footer() {
       <div className="footer-main">
         <a className="footer-brand" href="#home" aria-label="Tonexa Music Academy home">
           <span className="brand-mark">T<span>.</span></span>
-          <span>TONEXA / MUSIC ACADEMY</span>
+          <span>Tonexa Music Academy</span>
         </a>
-        <div className="footer-note">
-          <span>HOME TUITION ONLY</span>
-          <span>Learn music where you feel at home.</span>
-        </div>
+        <p className="footer-note">Music lessons at your home.</p>
         <a className="footer-email" href={emailUrl}>
-          <Mail size={16} aria-hidden="true" /> {emailAddress}
+          <Mail size={16} aria-hidden="true" />
+          {emailAddress}
         </a>
       </div>
       <div className="footer-bottom">
-        <span>© {new Date().getFullYear()} TONEXA MUSIC ACADEMY</span>
+        <span>© {new Date().getFullYear()} Tonexa Music Academy</span>
         <nav aria-label="Footer navigation">
           <a href="/terms">Terms of use</a>
           <a href="/privacy">Privacy policy</a>
@@ -143,7 +148,9 @@ function App() {
   const [preparedMessage, setPreparedMessage] = useState("");
 
   useEffect(() => {
-    const timer = window.setTimeout(() => setShowLoader(false), 650);
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const delay = reducedMotion ? 120 : 1120;
+    const timer = window.setTimeout(() => setShowLoader(false), delay);
     return () => window.clearTimeout(timer);
   }, []);
 
@@ -163,11 +170,9 @@ function App() {
       "Interested in: " + form.lesson,
       "Home tuition area: " + (form.area.trim() || "Not provided"),
       "Message: " + (form.message.trim() || "Please share the lesson details."),
-      "",
-      "I understand that this is an enquiry only and does not confirm a lesson booking.",
     ].join("\n");
 
-    const subject = encodeURIComponent("Music lesson enquiry — " + form.name.trim());
+    const subject = encodeURIComponent("Music lesson enquiry from " + form.name.trim());
     const body = encodeURIComponent(message);
     const url = emailUrl + "?subject=" + subject + "&body=" + body;
 
@@ -181,137 +186,119 @@ function App() {
 
       <div className="site-shell">
         <a className="skip-link" href="#main-content">Skip to content</a>
-        <div className="topline">
-          <span><span className="topline-dot" /> MUSIC LESSONS IN PUNE</span>
-          <span>HOME TUITION ONLY</span>
-        </div>
         <Header />
 
         <main id="main-content">
           <section className="hero" id="home">
             <div className="hero-copy">
-              <p className="eyebrow"><span className="eyebrow-rule" /> MUSIC, BROUGHT TO YOU</p>
-              <h1>Find your rhythm.<br /><em>At your place.</em></h1>
+              <p className="eyebrow">Music lessons at home</p>
+              <h1>Make music<br /><em>at your place</em></h1>
               <p className="hero-description">
-                Learn keyboard, guitar, drums or vocals with Tonexa Music Academy.
-                We offer home tuition only, so you can learn in a familiar space.
+                Learn keyboard, guitar, drums or vocals with lessons arranged at your home.
+                Tell us what you want to play and where you live.
               </p>
               <div className="hero-actions">
                 <a className="primary-link" href="#contact">
-                  ENQUIRE FOR HOME TUITION <ArrowUpRight size={16} aria-hidden="true" />
+                  Enquire about home tuition <ArrowUpRight size={16} aria-hidden="true" />
                 </a>
-                <a className="secondary-link" href="#lessons">Explore lessons</a>
+                <a className="secondary-link" href="#lessons">See the lessons</a>
               </div>
-              <div className="hero-proof">
+              <p className="hero-location">
                 <House size={17} aria-hidden="true" />
-                <span>LESSONS AT YOUR HOME</span>
-                <span className="proof-divider" />
-                <span>PUNE</span>
-              </div>
+                Home tuition only
+              </p>
             </div>
 
-            <div className="hero-art" aria-label="Music academy home tuition">
-              <div className="art-orbit orbit-one" />
-              <div className="art-orbit orbit-two" />
-              <div className="art-center">
-                <span className="art-note">♪</span>
-                <span className="art-word">MAKE<br /><em>MUSIC.</em></span>
+            <div className="hero-art" aria-hidden="true">
+              <div className="hero-art-title">Tonexa</div>
+              <svg className="music-art" viewBox="0 0 520 360" role="presentation">
+                <path d="M38 104 C154 70 293 71 475 105" />
+                <path d="M38 132 C154 98 293 99 475 133" />
+                <path d="M38 160 C154 126 293 127 475 161" />
+                <path d="M38 188 C154 154 293 155 475 189" />
+                <path d="M38 216 C154 182 293 183 475 217" />
+                <path className="music-note-stem" d="M328 70 V198" />
+                <path className="music-note-head" d="M328 196 C313 191 295 199 295 211 C295 223 315 224 328 215 C337 208 337 199 328 196Z" />
+                <path className="music-note-flag" d="M328 72 C381 78 391 112 366 135" />
+              </svg>
+              <div className="hero-art-caption">
+                <span>Learn</span>
+                <span>Practice</span>
+                <span>Play</span>
               </div>
-              <div className="art-chip chip-keyboard"><Music2 size={18} /> KEYBOARD</div>
-              <div className="art-chip chip-guitar"><Guitar size={18} /> GUITAR</div>
-              <div className="art-chip chip-drums"><Drum size={18} /> DRUMS</div>
-              <div className="art-chip chip-vocals"><Mic size={18} /> VOCALS</div>
-              <div className="art-caption"><span>TONEXA</span><span>LEARN / PLAY / GROW</span></div>
             </div>
-            <div className="hero-index">TMA — 01 / 04</div>
           </section>
 
           <section className="lessons-section" id="lessons">
             <div className="section-intro">
               <div>
-                <p className="eyebrow"><span className="eyebrow-rule" /> CHOOSE YOUR SOUND</p>
-                <h2>What would you<br /><em>like to play?</em></h2>
+                <p className="eyebrow">Choose an instrument</p>
+                <h2>What would you<br /><em>like to learn?</em></h2>
               </div>
-              <p>Start with the instrument that interests you. Ask us about lesson availability in your area.</p>
+              <p>
+                Pick an instrument to add it to your enquiry. Share your area and
+                we can discuss home lesson availability by email.
+              </p>
             </div>
 
             <div className="lesson-list">
-              {lessons.map(({ name, detail, icon: Icon }, index) => (
+              {lessons.map(({ name, detail, icon: Icon }) => (
                 <a
                   className="lesson-row"
                   href="#contact"
                   key={name}
                   onClick={() => setForm((current) => ({ ...current, lesson: name }))}
                 >
-                  <span className="lesson-number">0{index + 1}</span>
                   <span className="lesson-icon">
-                    <Icon size={27} strokeWidth={1.5} aria-hidden="true" />
+                    <Icon size={27} strokeWidth={1.45} aria-hidden="true" />
                   </span>
                   <span className="lesson-copy">
                     <strong>{name}</strong>
                     <span>{detail}</span>
                   </span>
                   <span className="lesson-link">
-                    ENQUIRE <ArrowUpRight size={16} aria-hidden="true" />
+                    Enquire <ArrowUpRight size={16} aria-hidden="true" />
                   </span>
                 </a>
               ))}
             </div>
           </section>
 
-          <section className="practice-section" id="home-tuition">
-            <div className="practice-art">
-              <div className="home-illustration">
-                <div className="home-illustration-ring" />
-                <House size={106} strokeWidth={1} aria-hidden="true" />
-                <span className="home-illustration-label">YOUR HOME<br />YOUR MUSIC</span>
-                <span className="home-illustration-note note-a">♪</span>
-                <span className="home-illustration-note note-b">♫</span>
-              </div>
+          <section className="home-section" id="home-tuition">
+            <div className="home-art" aria-hidden="true">
+              <House size={118} strokeWidth={1} />
+              <span className="home-art-note">♪</span>
             </div>
-            <div className="practice-copy">
-              <p className="eyebrow"><span className="eyebrow-rule" /> THE TONEXA WAY</p>
-              <h2>Learn in your<br /><em>own space.</em></h2>
+            <div className="home-copy">
+              <p className="eyebrow">Home tuition</p>
+              <h2>Lessons happen<br /><em>at your home</em></h2>
               <p>
-                Tonexa Music Academy offers home tuition only. Lessons are arranged
-                for students at their own homes — no academy visit or studio
-                attendance is offered.
+                Tonexa Music Academy offers home tuition only. Tell us your area
+                and the instrument you are interested in. We will reply by email
+                to discuss whether lessons can be arranged at your address.
               </p>
-              <div className="home-tuition-callout">
-                <House size={20} aria-hidden="true" />
-                <span><strong>HOME TUITION ONLY</strong><small>Share your area when you enquire so availability can be confirmed.</small></span>
-              </div>
               <a className="text-link" href="#contact">
-                ASK ABOUT YOUR AREA <ArrowUpRight size={16} aria-hidden="true" />
+                Ask about your area <ArrowUpRight size={16} aria-hidden="true" />
               </a>
             </div>
           </section>
 
           <section className="contact-section" id="contact">
             <div className="contact-copy">
-              <p className="eyebrow"><span className="eyebrow-rule" /> LET'S GET STARTED</p>
-              <h2>Ready to make<br /><em>some music?</em></h2>
+              <p className="eyebrow">Get in touch</p>
+              <h2>Tell us what<br /><em>you want to play</em></h2>
               <p>
-                Tell us which instrument you're interested in and where you'd
-                like home tuition. We'll reply by email with the next steps.
+                Send the details below and your email app will open a message
+                addressed to Tonexa Music Academy. You can review it before sending.
               </p>
               <a className="contact-detail" href={emailUrl}>
                 <Mail size={18} aria-hidden="true" />
                 <span>{emailAddress}</span>
                 <ArrowUpRight size={15} aria-hidden="true" />
               </a>
-              <div className="contact-note">
-                <Check size={15} aria-hidden="true" />
-                <span>Enquiries are not confirmed bookings. Lesson details are agreed directly by email.</span>
-              </div>
             </div>
 
             <form className="enquiry-form" onSubmit={submitEnquiry}>
-              <div className="form-heading">
-                <span>LESSON ENQUIRY</span>
-                <span>01 — 04 / YOUR DETAILS</span>
-              </div>
-
               <label>
                 Your name
                 <input
@@ -325,7 +312,7 @@ function App() {
               </label>
 
               <label>
-                Phone number <span className="optional-label">OPTIONAL</span>
+                Phone number <span className="optional-label">Optional</span>
                 <input
                   name="phone"
                   type="tel"
@@ -345,33 +332,33 @@ function App() {
               </label>
 
               <label>
-                Your area / locality <span className="optional-label">OPTIONAL</span>
+                Your area <span className="optional-label">Optional</span>
                 <input
                   name="area"
                   value={form.area}
                   onChange={updateField("area")}
-                  placeholder="Where would lessons take place?"
+                  placeholder="Your area or locality"
                 />
               </label>
 
               <label className="message-field">
-                Anything you'd like us to know? <span className="optional-label">OPTIONAL</span>
+                Message <span className="optional-label">Optional</span>
                 <textarea
                   name="message"
                   rows="3"
                   maxLength={600}
                   value={form.message}
                   onChange={updateField("message")}
-                  placeholder="Your experience level, preferred days, or any questions..."
+                  placeholder="Experience level, preferred days or questions"
                 />
               </label>
 
               <button className="submit-link" type="submit">
-                PREPARE EMAIL ENQUIRY <ArrowUpRight size={16} aria-hidden="true" />
+                Prepare email enquiry <ArrowUpRight size={16} aria-hidden="true" />
               </button>
 
               <p className="form-note">
-                This opens a new email draft addressed to Tonexa. Review it and press Send in your email app.
+                Your email app will open a draft to {emailAddress}. Press Send when you are ready.
               </p>
 
               {preparedMessage && (
