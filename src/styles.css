@@ -141,12 +141,6 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 
 .hero-copy { max-width: 680px; }
-.eyebrow {
-  margin: 0 0 22px;
-  color: #8C6B12;
-  font-size: 14px;
-  font-weight: 600;
-}
 .hero h1 {
   margin: 0;
   color: var(--navy);
@@ -235,7 +229,7 @@ button { -webkit-tap-highlight-color: transparent; }
 }
 .music-art path {
   fill: none;
-  stroke: rgba(249,249,249,.62);
+  stroke: #AAB5C8;
   stroke-width: 2;
 }
 .music-art .music-note-stem,
@@ -246,7 +240,7 @@ button { -webkit-tap-highlight-color: transparent; }
   align-self: stretch;
   justify-content: space-between;
   margin: 10px 30px 25px;
-  color: rgba(249,249,249,.78);
+  color: #E6EAF1;
   font-family: var(--serif);
   font-size: 16px;
 }
@@ -265,7 +259,6 @@ button { -webkit-tap-highlight-color: transparent; }
   max-width: 1140px;
   margin: 0 auto 43px;
 }
-.section-intro .eyebrow { color: var(--gold); }
 .section-intro h2,
 .home-copy h2,
 .contact-copy h2 {
@@ -276,7 +269,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .section-intro p:last-child {
   max-width: 360px;
   margin: 0 0 4px;
-  color: rgba(249,249,249,.76);
+  color: #E6EAF1;
   font-size: 15px;
   line-height: 1.75;
 }
@@ -288,10 +281,10 @@ button { -webkit-tap-highlight-color: transparent; }
   gap: 22px;
   min-height: 112px;
   padding: 16px 0;
-  border-top: 1px solid rgba(249,249,249,.24);
+  border-top: 1px solid #3D4E6B;
   transition: padding .2s ease, background .2s ease;
 }
-.lesson-row:last-child { border-bottom: 1px solid rgba(249,249,249,.24); }
+.lesson-row:last-child { border-bottom: 1px solid #3D4E6B; }
 .lesson-row:hover { padding-right: 12px; padding-left: 12px; }
 .lesson-icon {
   display: grid;
@@ -311,7 +304,7 @@ button { -webkit-tap-highlight-color: transparent; }
   font-weight: 400;
 }
 .lesson-copy > span {
-  color: rgba(249,249,249,.72);
+  color: #E6EAF1;
   font-size: 14px;
   line-height: 1.5;
 }
@@ -337,14 +330,6 @@ button { -webkit-tap-highlight-color: transparent; }
   min-height: 330px;
   place-items: center;
   color: var(--navy);
-}
-.home-art::before {
-  position: absolute;
-  width: 255px;
-  aspect-ratio: 1;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  content: "";
 }
 .home-art > svg { position: relative; z-index: 1; }
 .home-art-note {
@@ -413,11 +398,6 @@ button { -webkit-tap-highlight-color: transparent; }
   color: #4D5C74;
   font-size: 13px;
   line-height: 1.5;
-}
-.optional-label {
-  margin-left: 5px;
-  color: #8C6B12;
-  font-size: 11px;
 }
 .enquiry-form input,
 .enquiry-form select,
@@ -511,8 +491,8 @@ button { -webkit-tap-highlight-color: transparent; }
   justify-content: space-between;
   gap: 20px;
   padding-top: 20px;
-  border-top: 1px solid rgba(249,249,249,.22);
-  color: rgba(249,249,249,.67);
+  border-top: 1px solid #3D4E6B;
+  color: #D2D8E2;
   font-size: 12px;
 }
 .footer-bottom nav {
@@ -646,7 +626,6 @@ button { -webkit-tap-highlight-color: transparent; }
     padding: 68px 7%;
   }
   .home-art { min-height: 260px; }
-  .home-art::before { width: 205px; }
   .home-art > svg { width: 96px; height: 96px; }
   .home-art-note { top: 15px; right: 22%; }
   .contact-section {
