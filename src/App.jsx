@@ -7,6 +7,7 @@ import {
   Accordion, FadeContent, Magnet, Ripple, ScrollProgress,
   ScrollReveal, SplitText, SpotlightCard, StaggeredMenu, Waveform
 } from "./ReactBits.jsx";
+import GradientASCII from "./GradientASCII.jsx";
 
 const emailAddress = "tonexa.music.acadmy@gmail.com";
 const emailUrl = "mailto:" + emailAddress;
