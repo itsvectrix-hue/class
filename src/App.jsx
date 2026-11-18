@@ -191,7 +191,6 @@ function App() {
         <main id="main-content">
           <section className="hero" id="home">
             <div className="hero-copy">
-              <p className="eyebrow">Music lessons at home</p>
               <h1>Make music<br /><em>at your place</em></h1>
               <p className="hero-description">
                 Learn keyboard, guitar, drums or vocals with lessons arranged at your home.
@@ -221,18 +220,13 @@ function App() {
                 <path className="music-note-head" d="M328 196 C313 191 295 199 295 211 C295 223 315 224 328 215 C337 208 337 199 328 196Z" />
                 <path className="music-note-flag" d="M328 72 C381 78 391 112 366 135" />
               </svg>
-              <div className="hero-art-caption">
-                <span>Learn</span>
-                <span>Practice</span>
-                <span>Play</span>
-              </div>
+              <div className="hero-art-caption">Music lessons at home</div>
             </div>
           </section>
 
           <section className="lessons-section" id="lessons">
             <div className="section-intro">
               <div>
-                <p className="eyebrow">Choose an instrument</p>
                 <h2>What would you<br /><em>like to learn?</em></h2>
               </div>
               <p>
@@ -270,7 +264,6 @@ function App() {
               <span className="home-art-note">♪</span>
             </div>
             <div className="home-copy">
-              <p className="eyebrow">Home tuition</p>
               <h2>Lessons happen<br /><em>at your home</em></h2>
               <p>
                 Tonexa Music Academy offers home tuition only. Tell us your area
@@ -285,7 +278,6 @@ function App() {
 
           <section className="contact-section" id="contact">
             <div className="contact-copy">
-              <p className="eyebrow">Get in touch</p>
               <h2>Tell us what<br /><em>you want to play</em></h2>
               <p>
                 Send the details below and your email app will open a message
@@ -312,7 +304,7 @@ function App() {
               </label>
 
               <label>
-                Phone number <span className="optional-label">Optional</span>
+                Phone number (optional)
                 <input
                   name="phone"
                   type="tel"
