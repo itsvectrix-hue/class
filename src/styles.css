@@ -318,69 +318,49 @@ button { -webkit-tap-highlight-color: transparent; }
   background: linear-gradient(90deg,#06162D 0%,rgba(6,22,45,.98) 22%,rgba(6,22,45,.88) 38%,rgba(6,22,45,.46) 55%,rgba(6,22,45,.08) 78%,rgba(6,22,45,.08) 100%);
 }
 
-/* Tonexa home-edition brand panel */
+
+/* Minimal drum-kit detail: adds drums without competing with the hero photography */
+.hero-drum-detail {
+  position:absolute; z-index:0; left:clamp(3%,7vw,9%); bottom:9%; width:clamp(190px,22vw,300px);
+  color:rgba(201,162,39,.44); opacity:.7; pointer-events:none;
+  filter:drop-shadow(0 8px 18px rgba(0,0,0,.18));
+}
+.hero-drum-detail svg { display:block; width:100%; height:auto; }
+@media(max-width:1120px){.hero-drum-detail{left:4%;bottom:8%;width:220px;opacity:.55;}}
+@media(max-width:760px){.hero-drum-detail{left:auto;right:5%;bottom:45%;width:145px;opacity:.28;}}
+@media(max-width:460px){.hero-drum-detail{right:4%;bottom:43%;width:116px;opacity:.22;}}
+
+/* Tonexa home-edition panel — simple, clean and musical */
 .about-art {
-  position:relative;display:block;min-height:398px;padding:24px;overflow:hidden;isolation:isolate;
-  border:1px solid rgba(201,162,39,.44);
-  background:radial-gradient(ellipse at 82% 18%,rgba(201,162,39,.16),transparent 33%),radial-gradient(ellipse at 9% 91%,rgba(44,87,143,.22),transparent 44%),linear-gradient(135deg,#0D2851 0%,#081B39 55%,#06152D 100%);
-  box-shadow:0 20px 48px rgba(10,31,68,.12);
+  position:relative; min-height:340px; display:grid; place-items:center; overflow:hidden; isolation:isolate;
+  background:#0A1F44;
 }
-.about-art::before {
-  position:absolute;z-index:-1;inset:0;
-  background-image:linear-gradient(rgba(255,255,255,.028) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.028) 1px,transparent 1px);
-  background-size:34px 34px;mask-image:linear-gradient(135deg,#000 0%,transparent 75%);content:"";
-}
+.about-art-ascii { position:absolute !important; inset:0; z-index:-2; opacity:.72; }
 .about-art::after {
-  position:absolute;z-index:-1;right:-120px;bottom:-210px;width:420px;height:420px;
-  border:1px solid rgba(201,162,39,.22);border-radius:50%;
-  box-shadow:0 0 0 22px rgba(201,162,39,.035),0 0 0 48px rgba(201,162,39,.025);content:"";
+  position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(180deg,rgba(10,31,68,.55),rgba(10,31,68,.88));
+  content:"";
 }
-.about-art-frame {position:relative;display:flex;min-height:348px;flex-direction:column;justify-content:space-between;padding:4px 4px 0;border:1px solid rgba(229,188,89,.32);}
-.about-art-frame::before,.about-art-frame::after {position:absolute;width:25px;height:25px;border-color:#D5A83D;border-style:solid;content:"";}
-.about-art-frame::before {top:-1px;left:-1px;border-width:1px 0 0 1px;}
-.about-art-frame::after {right:-1px;bottom:-1px;border-width:0 1px 1px 0;}
-.about-art-meta,.about-art-bottom {display:flex;align-items:center;justify-content:space-between;gap:15px;color:rgba(237,241,248,.72);font-size:9px;font-weight:600;letter-spacing:.17em;}
-.about-art-meta {padding:13px 16px 0;}
-.about-art-meta b {margin-left:8px;color:#E3B64C;font-weight:600;}
-.about-art-center {display:flex;align-items:center;justify-content:center;gap:clamp(18px,3vw,36px);padding:24px 12px 15px;}
-.about-art-emblem {position:relative;display:grid;width:clamp(126px,14vw,168px);flex:0 0 auto;aspect-ratio:1;place-items:center;border:1px solid rgba(229,188,89,.4);border-radius:50%;background:radial-gradient(circle,rgba(201,162,39,.13),rgba(201,162,39,.025) 63%,transparent 64%);}
-.about-art-emblem::before,.about-art-emblem::after {position:absolute;inset:10px;border:1px dashed rgba(229,188,89,.25);border-radius:50%;content:"";}
-.about-art-emblem::after {inset:-9px;border-style:solid;border-color:rgba(229,188,89,.14);}
-.about-art-emblem svg {position:relative;z-index:2;width:76%;height:76%;filter:drop-shadow(0 0 8px rgba(201,162,39,.15));}
-.about-art-orbit {position:absolute;z-index:1;width:8px;height:8px;border-radius:50%;background:#E3B64C;box-shadow:0 0 13px rgba(229,188,89,.8);}
-.about-art-orbit-one {top:11%;right:19%;}
-.about-art-orbit-two {bottom:17%;left:10%;width:5px;height:5px;}
-.about-art-emblem-caption {position:absolute;z-index:3;right:-15px;bottom:14px;padding:5px 9px;border:1px solid rgba(229,188,89,.45);color:#F0C65F;background:#0A1F44;font-size:8px;font-weight:700;letter-spacing:.18em;}
-.about-art-wordmark {display:grid;justify-items:start;min-width:0;}
-.about-art-overline {margin-bottom:8px;color:#E2B84F;font-size:9px;font-weight:700;letter-spacing:.2em;}
-.about-art-name {color:#FAF8F2;font:400 clamp(38px,5vw,58px)/.98 "Playfair Display",Georgia,serif;letter-spacing:.035em;}
-.about-art-subname {margin-top:9px;color:rgba(242,245,250,.84);font-size:9px;letter-spacing:.35em;}
-.about-art-wordmark p {margin:19px 0 0;color:#D5DCE8;font:400 14px "Playfair Display",Georgia,serif;}
-.about-art-frequency {position:relative;display:flex;min-height:42px;align-items:center;margin:0 18px 16px;border-top:1px solid rgba(229,188,89,.15);border-bottom:1px solid rgba(229,188,89,.15);}
-.about-art-staff {position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;opacity:.48;}
-.about-art-staff i {display:block;width:100%;height:1px;background:rgba(229,188,89,.45);}
-.about-art-frequency .about-wave {position:relative;z-index:1;width:100%;height:38px;}
-.about-art-frequency .rb-waveform {justify-content:center;gap:5px;}
-.about-art-frequency .rb-waveform i {flex-basis:2px;max-height:27px;opacity:.92;}
-.about-art-bottom {padding:0 16px 13px;border-top:1px solid rgba(229,188,89,.12);min-height:34px;font-size:8px;letter-spacing:.16em;}
-.about-art-bottom b {color:#E3B64C;font-size:13px;}
-@media(max-width:760px) {
- .hero::before {background-position:65% top;background-size:auto 64%;}
- .about-art {min-height:360px;padding:17px;}
- .about-art-frame {min-height:324px;}
- .about-art-center {gap:18px;padding-right:8px;padding-left:8px;}
- .about-art-emblem {width:clamp(112px,32vw,145px);}
- .about-art-name {font-size:clamp(34px,9vw,46px);}
- .about-art-wordmark p {max-width:160px;font-size:12px;}
- .about-art-meta,.about-art-bottom {font-size:7px;letter-spacing:.11em;}
+.about-art-inner {
+  position:relative; z-index:2; display:grid; width:min(78%,470px); justify-items:center;
+  gap:12px; padding:34px 24px; border:1px solid rgba(201,162,39,.34);
 }
-@media(max-width:390px) {
- .about-art {padding:13px;}
- .about-art-center {flex-direction:column;gap:15px;}
- .about-art-emblem {width:112px;}
- .about-art-wordmark {justify-items:center;}
- .about-art-overline {font-size:8px;}
- .about-art-name {font-size:38px;}
- .about-art-wordmark p {max-width:none;margin-top:8px;text-align:center;}
- .about-art-frame {min-height:355px;}
+.about-art-eyebrow { color:rgba(249,249,249,.72); font-size:8px; font-weight:700; letter-spacing:.24em; }
+.about-art-inner > strong {
+  margin-top:2px; color:#C9A227; font:400 clamp(38px,5vw,58px)/1 "Playfair Display",Georgia,serif; letter-spacing:.12em;
+}
+.about-art-subtitle { color:#F9F9F9; font-size:9px; font-weight:700; letter-spacing:.32em; }
+.about-art-wave { width:min(100%,330px); height:38px; margin-top:7px; }
+.about-art-wave .rb-waveform { gap:5px; }
+.about-art-wave .rb-waveform i { flex-basis:2px; max-height:26px; }
+.about-art-icons { display:flex; align-items:center; gap:19px; margin-top:3px; color:#C9A227; }
+.about-art-icons svg { width:18px; height:18px; stroke-width:1.35; }
+.about-art-note { color:rgba(249,249,249,.62); font-size:7px; letter-spacing:.13em; text-align:center; }
+@media(max-width:760px){
+  .about-art{min-height:300px}.about-art-inner{width:86%;padding:28px 16px}.about-art-inner>strong{font-size:42px}
+  .about-art-icons{gap:14px}.about-art-icons svg{width:16px;height:16px}.about-art-note{max-width:250px;line-height:1.5}
+}
+@media(max-width:390px){
+  .about-art{min-height:275px}.about-art-inner{width:90%;padding:23px 11px}.about-art-eyebrow{font-size:7px;letter-spacing:.16em}
+  .about-art-inner>strong{font-size:37px}.about-art-wave{width:90%}.about-art-icons{gap:11px}
 }
