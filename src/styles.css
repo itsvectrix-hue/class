@@ -262,7 +262,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .rb-text-pressure { display: inline-block; font-weight: var(--rb-weight, 400); transition: font-weight .12s ease; }
 .rb-shuffle-text { display: inline-block; }
 .rb-text-scatter span { display: inline-block; transition: transform .24s ease; }
-.rb-text-scatter:hover span { transform: translateY(calc((var(--rb-index) % 3) * -2px)); }
+.rb-text-scatter:hover span { transform: translateY(calc(var(--rb-index) * -0.12px)); }
 .rb-scroll-float { transform: translateY(calc(var(--rb-float, 0) * 1px)); transition: transform .08s linear; }
 .rb-count-up { font-variant-numeric: tabular-nums; }
 .rb-magnet { display: inline-block; transform: translate(var(--rb-magnet-x, 0), var(--rb-magnet-y, 0)); transition: transform .24s ease; }
@@ -295,7 +295,7 @@ button { -webkit-tap-highlight-color: transparent; }
 .rb-logo-loop-track { display: inline-flex; gap: 38px; animation: loop-drift 42s linear infinite; }
 .rb-logo-loop-track span { color: currentColor; }
 .rb-waveform { display: flex; align-items: center; justify-content: center; gap: 4px; height: 100%; min-height: 24px; overflow: hidden; }
-.rb-waveform i { display: block; width: 3px; height: calc(5px + ((var(--rb-bar) * 17) % 37) * 1px); background: var(--gold); transform-origin: center; animation: wave-pulse 1.2s ease-in-out infinite alternate; animation-delay: calc(var(--rb-bar) * -31ms); }
+.rb-waveform i { display: block; width: 3px; height: calc(8px + var(--rb-bar) * 1.4px); background: var(--gold); transform-origin: center; animation: wave-pulse 1.2s ease-in-out infinite alternate; animation-delay: calc(var(--rb-bar) * -31ms); }
 @keyframes wave-pulse { from { transform: scaleY(.45); } to { transform: scaleY(1); } }
 .rb-hover-preview { position: relative; display: inline-flex; align-items: center; gap: 10px; }
 .rb-hover-preview-label { position: absolute; right: 100%; top: 50%; margin-right: 16px; color: #D6DDE8; font-size: 11px; white-space: nowrap; opacity: 0; transform: translate(5px,-50%); transition: opacity .2s ease, transform .2s ease; pointer-events: none; }
@@ -375,3 +375,6 @@ button { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .rb-tilted-card, .rb-magnet, .rb-scroll-float, .rb-parallax { transform: none !important; }
 }
+
+.footer-brand-loop { max-width: 230px; color: #C8D1DF; font-size: 10px; letter-spacing: .04em; }
+.hero-cta-glare { display: inline-flex; }

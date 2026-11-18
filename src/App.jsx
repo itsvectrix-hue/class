@@ -5,7 +5,7 @@ import {
   CountUp, CurvedLoop, FadeContent, HoverPreview, Magnet, Parallax, Ripple,
   RotatingText, ScrollFloat, ScrollProgress, ScrollReveal, ScrollVelocity,
   ShuffleText, SplitText, SpotlightCard, StaggeredMenu, TextPressure, TextScatter,
-  TextType, TiltedCard, Waveform
+  TextType, TiltedCard, VariableProximity, Waveform
 } from "./ReactBits.jsx";
 
 const emailAddress = "tonexa.music.acadmy@gmail.com";
@@ -29,7 +29,7 @@ function Brand({ footer = false }) {
   return (
     <a className={footer ? "brand brand-footer" : "brand"} href="#home" aria-label="Tonexa Music Academy home">
       <img src="/tonexa-mark.svg" alt="" className="brand-symbol" />
-      <span className="brand-copy"><strong>Tonexa</strong><small>Music Academy</small></span>
+      <span className="brand-copy"><VariableProximity><strong>Tonexa</strong></VariableProximity><small>Music Academy</small></span>
     </a>
   );
 }
@@ -137,6 +137,7 @@ function Footer() {
       <div className="footer-main">
         <Brand footer />
         <p className="footer-note"><TextScatter text="Music belongs at home." /></p>
+        <LogoLoop items={["Tonexa Music Academy", "Home tuition only"]} className="footer-brand-loop" />
         <a className="footer-email" href={emailUrl}><Mail size={17} aria-hidden="true" /> {emailAddress}</a>
       </div>
       <div className="footer-bottom">
@@ -205,7 +206,7 @@ function App() {
               <BlurText className="hero-description">Personal music lessons arranged at your home. Choose an instrument, share your area and ask about availability.</BlurText>
               <p className="hero-instrument-line">Explore <TextType items={["keyboard", "guitar", "drums", "conga", "vocals"]} /></p>
               <div className="hero-actions">
-                <Magnet><ClickSpark><Ripple as="a" className="primary-link" href="#contact"><ShuffleText text="Ask about lessons" /> <ArrowUpRight size={17} aria-hidden="true" /></Ripple></ClickSpark></Magnet>
+                <Magnet><GlareHover className="hero-cta-glare"><ClickSpark><Ripple as="a" className="primary-link" href="#contact"><ShuffleText text="Ask about lessons" /> <ArrowUpRight size={17} aria-hidden="true" /></Ripple></ClickSpark></GlareHover></Magnet>
                 <a className="secondary-link" href="#lessons">View instruments</a>
               </div>
               <p className="hero-subnote"><RotatingText items={["Lessons at your place", "Choose what you want to play", "Ask about your area"]} /></p>
