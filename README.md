@@ -18,6 +18,7 @@ The page uses editable source components from [React Bits](https://reactbits.dev
 - **AnimatedContent** for scroll-based section reveals, the studio image wipe, staggered steps and FAQ answer entrance.
 - **SpotlightCard** for the instrument gallery's subtle gold pointer spotlight.
 - **Magnet** for the primary hero action.
+- **Branded first-load intro:** a navy-and-gold equalizer with a progress sweep and GSAP curtain exit; it waits briefly for fonts/hero imagery, has a failsafe, and shortens to a static fade for reduced-motion users.
 
 The effects are intentionally restrained and respect reduced-motion preferences. Magnetic movement is disabled for coarse pointers/touch devices. The React Bits source components are checked into src/components/reactbits; they are not loaded from a third-party runtime.
 

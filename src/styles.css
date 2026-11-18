@@ -62,3 +62,139 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
 }
+
+/* Branded first-load intro */
+html.intro-lock, body.intro-lock { overflow: hidden; }
+.intro-loader {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: var(--paper);
+  background: #0A1F44;
+  isolation: isolate;
+  will-change: transform;
+}
+.intro-loader::before {
+  position: absolute;
+  inset: -20%;
+  z-index: -2;
+  content: "";
+  background:
+    radial-gradient(ellipse at 50% 48%, rgba(201,162,39,.13), transparent 34%),
+    radial-gradient(ellipse at 18% 88%, rgba(76,113,167,.16), transparent 45%),
+    radial-gradient(ellipse at 90% 10%, rgba(255,255,255,.045), transparent 36%);
+}
+.intro-loader-grain {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .13;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E");
+}
+.intro-loader-content {
+  display: flex;
+  width: min(100% - 48px, 430px);
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.intro-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.intro-wordmark img { width: 58px; height: 58px; object-fit: contain; }
+.intro-wordmark > div { display: grid; gap: 5px; text-align: left; }
+.intro-wordmark strong {
+  color: var(--paper);
+  font: 500 31px/.95 "Playfair Display", Georgia, serif;
+  letter-spacing: .16em;
+}
+.intro-wordmark span {
+  color: var(--gold-light);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .29em;
+}
+.intro-equalizer {
+  display: flex;
+  height: 43px;
+  align-items: center;
+  gap: 5px;
+  margin-top: 42px;
+}
+.intro-equalizer i {
+  display: block;
+  width: 3px;
+  height: 32px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #F2D889 0%, #C9A227 100%);
+  transform: scaleY(.25);
+  transform-origin: center;
+}
+.intro-equalizer i:nth-child(2n) { height: 21px; }
+.intro-equalizer i:nth-child(3n) { height: 38px; }
+.intro-loader-caption {
+  margin: 17px 0 0;
+  color: rgba(249,249,249,.76);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .19em;
+}
+.intro-loader-caption span { color: var(--gold-light); }
+.intro-loader-footer {
+  position: absolute;
+  right: 30px;
+  bottom: 27px;
+  left: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  color: rgba(249,249,249,.48);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: .17em;
+}
+.intro-loader-footer span:first-child { color: var(--gold-light); }
+.intro-loader-track {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(249,249,249,.12);
+}
+.intro-loader-track span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #98731C, #F1D98B, #C9A227);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+.hero-eyebrow { display: flex; flex-wrap: nowrap; align-items: center; gap: 11px; }
+.hero-eyebrow > span { flex: 0 0 27px; display: block; width: 27px; height: 1px; }
+.hero-eyebrow { white-space: nowrap; }
+@media (max-width: 480px) {
+  .intro-loader-content { width: min(100% - 36px, 360px); }
+  .intro-wordmark img { width: 50px; height: 50px; }
+  .intro-wordmark strong { font-size: 27px; }
+  .intro-wordmark span { font-size: 8px; letter-spacing: .24em; }
+  .intro-equalizer { margin-top: 34px; }
+  .intro-loader-footer { right: 18px; bottom: 20px; left: 18px; font-size: 7px; letter-spacing: .12em; }
+  .hero-eyebrow { gap: 9px; font-size: 8px; letter-spacing: .16em; }
+  .hero-eyebrow > span { flex-basis: 22px; width: 22px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro-loader { transform: none !important; }
+  .intro-equalizer i { transform: none !important; }
+  .intro-loader-track span { transform: scaleX(1) !important; }
+}
+
+/* Keep the horizontal studio-image reveal inside its section on small screens. */
+.about-section { overflow: hidden; }
