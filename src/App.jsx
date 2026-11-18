@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, Guitar, House, Mail, Menu, Mic2, Music2, Piano, Drum, X, MessageCircle } from "lucide-react";
+import { gsap } from "gsap";
 import AnimatedContent from "./components/reactbits/AnimatedContent/AnimatedContent.jsx";
 import BlurText from "./components/reactbits/BlurText/BlurText.jsx";
 import GradientText from "./components/reactbits/GradientText.jsx";
@@ -79,20 +80,125 @@ function Header() {
   </header>;
 }
 
+
+function IntroLoader({ onComplete }) {
+  const overlayRef = useRef(null);
+  const wordmarkRef = useRef(null);
+  const progressRef = useRef(null);
+  const equalizerRef = useRef(null);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return undefined;
+
+    const reducedMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
+    const startedAt = performance.now();
+    let finished = false;
+    let startTimer = 0;
+    let fallbackTimer = 0;
+    let exitTween;
+
+    const unlock = () => {
+      document.documentElement.classList.remove("intro-lock");
+      document.body.classList.remove("intro-lock");
+    };
+
+    document.documentElement.classList.add("intro-lock");
+    document.body.classList.add("intro-lock");
+
+    if (!reducedMotion) {
+      gsap.fromTo(
+        wordmarkRef.current,
+        { y: 18, opacity: 0, filter: "blur(8px)" },
+        { y: 0, opacity: 1, filter: "blur(0px)", duration: 0.82, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        equalizerRef.current?.children ?? [],
+        { scaleY: 0.22, opacity: 0.4 },
+        { scaleY: 1, opacity: 1, duration: 0.42, ease: "sine.inOut", stagger: { each: 0.07, from: "center" }, repeat: -1, yoyo: true }
+      );
+      gsap.to(progressRef.current, { scaleX: 0.92, duration: 1.3, ease: "power2.inOut" });
+    } else if (progressRef.current) {
+      progressRef.current.style.transform = "scaleX(1)";
+    }
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      const minimumDuration = reducedMotion ? 420 : 920;
+      const remaining = Math.max(0, minimumDuration - (performance.now() - startedAt));
+      startTimer = window.setTimeout(() => {
+        if (!overlayRef.current) return;
+        if (reducedMotion) {
+          unlock();
+          onComplete();
+          return;
+        }
+        gsap.to(progressRef.current, { scaleX: 1, duration: 0.16, ease: "power2.out" });
+        exitTween = gsap.to(overlayRef.current, {
+          yPercent: -102,
+          duration: 0.72,
+          delay: 0.08,
+          ease: "power4.inOut",
+          onComplete: () => {
+            unlock();
+            onComplete();
+          }
+        });
+      }, remaining);
+    };
+
+    const heroImage = new Image();
+    heroImage.decoding = "async";
+    heroImage.src = photo("photo-1708791783497-ad3ae07f9e69", 1400);
+    const imageReady = heroImage.complete
+      ? Promise.resolve()
+      : new Promise(resolve => {
+          heroImage.onload = resolve;
+          heroImage.onerror = resolve;
+        });
+    const fontsReady = document.fonts?.ready ?? Promise.resolve();
+
+    Promise.all([fontsReady, imageReady]).then(finish);
+    fallbackTimer = window.setTimeout(finish, 1500);
+
+    return () => {
+      window.clearTimeout(startTimer);
+      window.clearTimeout(fallbackTimer);
+      exitTween?.kill();
+      gsap.killTweensOf([wordmarkRef.current, progressRef.current, ...(equalizerRef.current ? [...equalizerRef.current.children] : [])]);
+      unlock();
+    };
+  }, [onComplete]);
+
+  return (
+    <div ref={overlayRef} className="intro-loader" role="status" aria-live="polite" aria-label="Loading Tonexa Music Academy">
+      <div className="intro-loader-grain" aria-hidden="true" />
+      <div className="intro-loader-content">
+        <div ref={wordmarkRef} className="intro-wordmark">
+          <img src="/tonexa-mark.svg" alt="" width="58" height="58" />
+          <div>
+            <strong>TONEXA</strong>
+            <span>MUSIC ACADEMY</span>
+          </div>
+        </div>
+        <div ref={equalizerRef} className="intro-equalizer" aria-hidden="true">
+          {Array.from({ length: 9 }, (_, index) => <i key={index} />)}
+        </div>
+        <p className="intro-loader-caption">FIND YOUR SOUND. <span>LEARN AT HOME.</span></p>
+      </div>
+      <div className="intro-loader-footer" aria-hidden="true">
+        <span>TONEXA / 01</span><span>PREPARING YOUR EXPERIENCE</span>
+      </div>
+      <div className="intro-loader-track" aria-hidden="true"><span ref={progressRef} /></div>
+    </div>
+  );
+}
+
 function Hero() {
   return <section className="hero" id="home">
     <div className="hero-content"><Reveal>
-      <BlurText
-        text="MUSIC LESSONS, AT YOUR HOME"
-        className="eyebrow rb-eyebrow"
-        animateBy="words"
-        direction="top"
-        delay={55}
-        stepDuration={0.34}
-        blur={3}
-        distance={10}
-        threshold={0.2}
-      />
+      <p className="eyebrow hero-eyebrow"><span />MUSIC LESSONS, AT YOUR HOME</p>
       <div className="hero-title" role="heading" aria-level="1" aria-label="Find your sound. Learn at home.">
         <BlurText
           text="Find your sound."
@@ -286,11 +392,14 @@ function Footer() {
 
 export default function App() {
   const [selectedInstrument,setSelectedInstrument] = useState("Keyboard");
+  const [introVisible, setIntroVisible] = useState(true);
+  const finishIntro = useCallback(() => setIntroVisible(false), []);
   const chooseInstrument = name => {
     setSelectedInstrument(name);
     document.getElementById("contact")?.scrollIntoView({behavior:"smooth",block:"start"});
   };
   return <>
+    {introVisible && <IntroLoader onComplete={finishIntro} />}
     <Header />
     <main>
       <Hero />
