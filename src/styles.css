@@ -243,3 +243,62 @@ button { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
   .rb-magnet, .rb-tilted-card, .rb-parallax { transform: none !important; }
 }
+
+
+/* Small interaction details used by the hero and contact form */
+.rb-waveform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 20px;
+  height: 100%;
+  overflow: hidden;
+}
+.rb-waveform i {
+  display: block;
+  flex: 0 0 3px;
+  max-height: 38px;
+  height: calc(6px + var(--rb-bar) * 0.85px);
+  border-radius: 2px;
+  background: var(--gold);
+  transform-origin: center;
+  animation: rb-wave-pulse 1.15s ease-in-out infinite alternate;
+  animation-delay: calc(var(--rb-bar) * -29ms);
+}
+@keyframes rb-wave-pulse {
+  from { transform: scaleY(.42); opacity: .62; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+.rb-magnet {
+  display: inline-block;
+  transform: translate(var(--rb-magnet-x, 0), var(--rb-magnet-y, 0));
+  transition: transform .22s ease;
+}
+.rb-ripple { position: relative; overflow: hidden; }
+.rb-ripple-wave {
+  position: absolute;
+  top: var(--rb-ripple-y, 50%);
+  left: var(--rb-ripple-x, 50%);
+  width: 12px;
+  height: 12px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+.rb-ripple:active .rb-ripple-wave { animation: rb-ripple-expand .55s ease-out; }
+@keyframes rb-ripple-expand {
+  0% { opacity: .5; transform: translate(-50%, -50%) scale(0); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(18); }
+}
+.rb-spotlight-card { position: relative; isolation: isolate; }
+.rb-spotlight-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(240px circle at var(--rb-spot-x, 50%) var(--rb-spot-y, 50%), rgba(201,162,39,.075), transparent 68%);
+  content: "";
+  pointer-events: none;
+}
