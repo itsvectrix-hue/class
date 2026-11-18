@@ -1,10 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 90" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 100" role="img" aria-labelledby="title desc">
   <title id="title">Tonexa Music Academy</title>
-  <desc id="desc">Tonexa Music Academy logo with an abstract conga-inspired T mark.</desc>
-  <path d="M18 28 Q48 10 78 28 L70 78 Q48 90 26 78Z" fill="#0A1F44"/>
-  <path d="M18 28 Q48 10 78 28" fill="none" stroke="#C9A227" stroke-width="7" stroke-linecap="round"/>
-  <path d="M34 45 H62 M48 45 V71" fill="none" stroke="#F9F9F9" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M35 60 Q48 67 61 60" fill="none" stroke="#C9A227" stroke-width="3" stroke-linecap="round"/>
-  <text x="98" y="51" fill="#0A1F44" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700" letter-spacing="-1">Tonexa</text>
-  <text x="100" y="72" fill="#52627A" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="2.1">MUSIC ACADEMY</text>
+  <desc id="desc">A house-shaped gold emblem with a music note beside the Tonexa Music Academy wordmark.</desc>
+  <path d="M10 45 L48 12 L86 45" fill="none" stroke="#C9A227" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M19 43 V82 Q19 87 25 87 H71 Q77 87 77 82 V43" fill="none" stroke="#C9A227" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M42 48 V73 C42 80 29 83 27 76 C25 69 36 65 42 68 V48 L64 42 V64 C64 71 51 74 49 67 C47 61 58 56 64 59 V42" fill="none" stroke="#F9F9F9" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="112" y="57" fill="#F9F9F9" font-family="Georgia, 'Times New Roman', serif" font-size="39" letter-spacing="1.5">TONEXA</text>
+  <text x="115" y="81" fill="#D9DFE8" font-family="Arial, Helvetica, sans-serif" font-size="11" letter-spacing="4.6">MUSIC ACADEMY</text>
 </svg>
