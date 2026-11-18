@@ -298,11 +298,38 @@ function App() {
         <Instruments />
 
         <section className="about-section" id="about">
-          <div className="about-art">
-            <div className="about-art-inner">
-              <p>TONEXA</p>
-              <div className="about-wave"><Waveform bars={37} /></div>
-              <span>LEARN AT HOME</span>
+          <div className="about-art" role="img" aria-label="Tonexa Music Academy home edition emblem">
+            <div className="about-art-frame">
+              <div className="about-art-meta">
+                <span>TONEXA / MUSIC ACADEMY</span>
+                <span>HOME EDITION <b>NO. 01</b></span>
+              </div>
+              <div className="about-art-center">
+                <div className="about-art-emblem">
+                  <span className="about-art-orbit about-art-orbit-one" />
+                  <span className="about-art-orbit about-art-orbit-two" />
+                  <svg viewBox="0 0 160 160" aria-hidden="true">
+                    <path d="M25 72 L80 25 L135 72" fill="none" stroke="#D6AA43" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M37 68 V126 Q37 132 44 132 H116 Q123 132 123 126 V68" fill="none" stroke="#D6AA43" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M72 75 V111 C72 121 53 124 50 114 C47 104 65 98 72 104 V75 L105 66 V96 C105 106 87 110 84 100 C81 91 98 85 105 92 V66" fill="none" stroke="#F9F9F9" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className="about-art-emblem-caption">PLAY</span>
+                </div>
+                <div className="about-art-wordmark">
+                  <span className="about-art-overline">YOUR SPACE. YOUR SOUND.</span>
+                  <strong className="about-art-name">TONEXA</strong>
+                  <span className="about-art-subname">MUSIC ACADEMY</span>
+                  <p>Music lessons, brought to your home.</p>
+                </div>
+              </div>
+              <div className="about-art-frequency">
+                <div className="about-art-staff" aria-hidden="true"><i /><i /><i /><i /><i /></div>
+                <Waveform bars={35} className="about-wave" />
+              </div>
+              <div className="about-art-bottom">
+                <span>PERSONALISED MUSIC LESSONS</span>
+                <span>AT YOUR DOORSTEP <b>↗</b></span>
+              </div>
             </div>
           </div>
           <div className="about-copy" id="home-tuition">
