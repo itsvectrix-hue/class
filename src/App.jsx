@@ -1,5 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, Check, ChevronDown, Guitar, House, Mail, Menu, Mic2, Music2, Piano, Drum, X, MessageCircle } from "lucide-react";
+import AnimatedContent from "./components/reactbits/AnimatedContent/AnimatedContent.jsx";
+import BlurText from "./components/reactbits/BlurText/BlurText.jsx";
+import GradientText from "./components/reactbits/GradientText.jsx";
+import Magnet from "./components/reactbits/Magnet/Magnet.jsx";
+import SpotlightCard from "./components/reactbits/SpotlightCard.jsx";
 
 const EMAIL = "tonexa.music.acadmy@gmail.com";
 const WHATSAPP = "919028671906";
@@ -21,18 +26,24 @@ const faqs = [
   { question:"How do I get in touch?", answer:"Use the enquiry form, email tonexa.music.acadmy@gmail.com or message +91 90286 71906 on WhatsApp." },
 ];
 
-function Reveal({ children, className = "" }) {
-  const ref = useRef(null);
-  useEffect(() => {
-    const node = ref.current;
-    if (!node || !("IntersectionObserver" in window)) { node?.classList.add("is-visible"); return undefined; }
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { node.classList.add("is-visible"); observer.unobserve(node); }
-    }, { threshold:0.12, rootMargin:"0px 0px -32px 0px" });
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
-  return <div ref={ref} className={"reveal " + className}>{children}</div>;
+function Reveal({ children, className = "", direction = "vertical", distance = 26, delay = 0, stagger = 0 }) {
+  return (
+    <AnimatedContent
+      className={"reveal " + className}
+      direction={direction}
+      distance={distance}
+      duration={0.72}
+      ease="power3.out"
+      blur={2}
+      initialOpacity={0}
+      threshold={0.16}
+      delay={delay}
+      stagger={stagger}
+      once
+    >
+      {children}
+    </AnimatedContent>
+  );
 }
 
 function Brand({ light = false }) {
@@ -71,11 +82,45 @@ function Header() {
 function Hero() {
   return <section className="hero" id="home">
     <div className="hero-content"><Reveal>
-      <p className="eyebrow"><span /> MUSIC LESSONS, AT YOUR HOME</p>
-      <h1>Find your sound.<br /><em>Learn at home.</em></h1>
+      <BlurText
+        text="MUSIC LESSONS, AT YOUR HOME"
+        className="eyebrow rb-eyebrow"
+        animateBy="words"
+        direction="top"
+        delay={55}
+        stepDuration={0.34}
+        blur={3}
+        distance={10}
+        threshold={0.2}
+      />
+      <div className="hero-title" role="heading" aria-level="1" aria-label="Find your sound. Learn at home.">
+        <BlurText
+          text="Find your sound."
+          className="hero-title-line"
+          animateBy="words"
+          direction="top"
+          delay={75}
+          stepDuration={0.48}
+          blur={4}
+          distance={14}
+          threshold={0.2}
+        />
+        <GradientText
+          className="hero-title-accent"
+          colors={["#C49A35", "#F1D98B", "#BE9230"]}
+          animationSpeed={14}
+          variant="flow"
+          scale={2}
+          pauseOnHover
+        >
+          Learn at home.
+        </GradientText>
+      </div>
       <p className="hero-description">Make space for music in your everyday life. Explore keyboard, guitar, drums, conga and vocal lessons arranged at home.</p>
       <div className="hero-actions">
-        <a className="button button-gold" href="#instruments">Explore instruments <ArrowRight size={17} /></a>
+        <Magnet padding={120} magnetStrength={2.4} maxOffset={8} scale={1.025} disabled={typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches} wrapperClassName="magnet-cta">
+          <a className="button button-gold" href="#instruments">Explore instruments <ArrowRight size={17} /></a>
+        </Magnet>
         <a className="text-link" href="#contact">Make an enquiry <ArrowUpRight size={16} /></a>
       </div>
       <div className="hero-note"><House size={17} strokeWidth={1.7} /><span>HOME TUITION ONLY</span></div>
@@ -98,12 +143,25 @@ function InstrumentSection({ onSelect }) {
       {instruments.map((item, index) => {
         const Icon = item.icon;
         return <button className="instrument-card" type="button" key={item.name} onClick={() => onSelect(item.name)}>
-          <span className="instrument-photo">
-            <img src={item.image} alt={item.alt} loading="lazy" width="900" height="1100" style={{ objectPosition:item.position }} />
-            <span className="instrument-number">0{index + 1}</span><span className="instrument-arrow"><ArrowUpRight size={19} /></span>
-          </span>
-          <span className="instrument-name-row"><strong>{item.name}</strong><Icon size={18} strokeWidth={1.6} aria-hidden="true" /></span>
-          <span className="instrument-description">{item.description}</span>
+          <SpotlightCard
+            className="instrument-spotlight"
+            theme="light"
+            spotlightColor="rgba(201, 162, 39, 0.38)"
+            intensity={0.22}
+            spotlightSize={245}
+            proximity={95}
+            softness={0.82}
+            borderGlow={0.24}
+            flare={false}
+            style={{ padding:0, borderRadius:0, background:"transparent", boxShadow:"none" }}
+          >
+            <span className="instrument-photo">
+              <img src={item.image} alt={item.alt} loading="lazy" width="900" height="1100" style={{ objectPosition:item.position }} />
+              <span className="instrument-number">0{index + 1}</span><span className="instrument-arrow"><ArrowUpRight size={19} /></span>
+            </span>
+            <span className="instrument-name-row"><strong>{item.name}</strong><Icon size={18} strokeWidth={1.6} aria-hidden="true" /></span>
+            <span className="instrument-description">{item.description}</span>
+          </SpotlightCard>
         </button>;
       })}
     </div>
@@ -112,10 +170,10 @@ function InstrumentSection({ onSelect }) {
 
 function AboutSection() {
   return <section className="about-section" id="about">
-    <div className="about-photo">
+    <AnimatedContent className="about-photo" direction="horizontal" distance={24} duration={0.9} ease="power3.out" wipe="left" threshold={0.18} once>
       <img src={photo("photo-1634286051376-940ff8525141", 1100)} alt="Studio microphone with electronic keyboards" loading="lazy" width="1100" height="1958" />
       <span className="photo-label">A SPACE TO START</span>
-    </div>
+    </AnimatedContent>
     <div className="about-copy"><Reveal>
       <p className="eyebrow eyebrow-dark">A MORE COMFORTABLE WAY TO LEARN</p>
       <h2>Your home.<br /><em>Your own rhythm.</em></h2>
@@ -135,9 +193,11 @@ function HowItWorks() {
     <p className="eyebrow eyebrow-dark">GETTING STARTED</p>
     <div className="heading-row steps-heading"><h2>Three simple steps.</h2><p>Send an enquiry first. Lesson arrangements and availability are confirmed directly with the academy.</p></div>
   </Reveal>
-  <div className="steps-grid">{steps.map(([number,title,description]) => <div className="step" key={number}>
-    <span className="step-number">{number}</span><h3>{title}</h3><p>{description}</p>
-  </div>)}</div></section>;
+  <AnimatedContent className="steps-grid" direction="vertical" distance={22} duration={0.68} ease="power3.out" threshold={0.18} stagger={0.13} once>
+    {steps.map(([number,title,description]) => <div className="step" key={number}>
+      <span className="step-number">{number}</span><h3>{title}</h3><p>{description}</p>
+    </div>)}
+  </AnimatedContent></section>;
 }
 
 function FAQ() {
@@ -152,7 +212,9 @@ function FAQ() {
       <button type="button" aria-expanded={active === index} aria-controls={"faq-answer-" + index} onClick={() => setActive(active === index ? -1 : index)}>
         <span>{item.question}</span><ChevronDown size={18} />
       </button>
-      {active === index && <p id={"faq-answer-" + index}>{item.answer}</p>}
+      {active === index && <AnimatedContent trigger="mount" className="faq-answer" direction="vertical" distance={10} duration={0.34} blur={1} initialOpacity={0}>
+        <p id={"faq-answer-" + index}>{item.answer}</p>
+      </AnimatedContent>}
     </div>)}</div>
   </section>;
 }

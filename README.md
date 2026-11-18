@@ -10,6 +10,20 @@ A responsive React and Vite website for music lessons arranged at students' home
 - Instruments: Keyboard, Guitar, Drums, Conga and Vocals
 - Brand colours: Deep Navy Blue (#0A1F44), Rich Gold (#C9A227), Off White (#F9F9F9)
 
+## React Bits effects
+
+The page uses editable source components from [React Bits](https://reactbits.dev):
+- **BlurText** for the hero eyebrow and headline reveal.
+- **GradientText** for the soft animated gold headline accent.
+- **AnimatedContent** for scroll-based section reveals, the studio image wipe, staggered steps and FAQ answer entrance.
+- **SpotlightCard** for the instrument gallery's subtle gold pointer spotlight.
+- **Magnet** for the primary hero action.
+
+The effects are intentionally restrained and respect reduced-motion preferences. Magnetic movement is disabled for coarse pointers/touch devices. The React Bits source components are checked into src/components/reactbits; they are not loaded from a third-party runtime.
+
+React Bits project: https://github.com/DavidHDev/react-bits
+License: MIT + Commons Clause (see the upstream repository's license).
+
 ## Photography
 Instrument and studio photographs are sourced from free stock photo libraries and delivered through their image CDNs:
 - Keyboard: Dima Zimakov, Unsplash
